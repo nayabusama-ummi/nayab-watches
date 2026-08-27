@@ -144,3 +144,119 @@
     transform: translateX(4px);
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Light-surface inversions
+
+   Every variant above was written for the dark cinematic sections: the fill and
+   the text are both warm ivory. Placed on an ivory page — the bag, checkout,
+   account — a "primary" button rendered as #F2ECE2 on #FBF8F3, which made the
+   single most important CTA in the store almost invisible.
+
+   The variants are not redefined, only inverted for light backgrounds, so the
+   dark sections are untouched and no component needs to know where it sits.
+   --------------------------------------------------------------------------- */
+.theme-ivory .editorial-button--primary,
+.theme-ivory-light .editorial-button--primary {
+  background-color: var(--color-charcoal);
+  color: var(--color-warm-ivory);
+  border-color: var(--color-charcoal);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .theme-ivory .editorial-button--primary:hover,
+  .theme-ivory-light .editorial-button--primary:hover {
+    background-color: var(--color-deep-black);
+    border-color: var(--color-deep-black);
+    color: var(--color-warm-ivory);
+  }
+}
+
+.theme-ivory .editorial-button--secondary,
+.theme-ivory-light .editorial-button--secondary {
+  color: var(--color-charcoal);
+}
+
+.theme-ivory .editorial-button--outline,
+.theme-ivory-light .editorial-button--outline {
+  color: var(--color-charcoal);
+  border-color: var(--border-light-emphasis);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .theme-ivory .editorial-button--outline:hover,
+  .theme-ivory-light .editorial-button--outline:hover {
+    border-color: var(--color-champagne-gold);
+    color: var(--color-champagne-gold);
+    background-color: rgba(184, 150, 93, 0.06);
+  }
+}
+
+.theme-ivory .editorial-button--light,
+.theme-ivory-light .editorial-button--light {
+  background-color: var(--color-bottle-green);
+  color: var(--color-warm-ivory);
+  border-color: var(--color-bottle-green);
+}
+
+/* ---------------------------------------------------------------------------
+   Locked state — disabled and in-flight
+   --------------------------------------------------------------------------- */
+.editorial-button--disabled,
+.editorial-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+}
+
+/* No press feedback and no arrow glide on something that will not respond. */
+.editorial-button--disabled:active,
+.editorial-button:disabled:active {
+  transform: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .editorial-button--disabled:hover .editorial-button__arrow-wrapper,
+  .editorial-button:disabled:hover .editorial-button__arrow-wrapper {
+    transform: none;
+  }
+}
+
+/*
+  The loading affordance is a slow sweep across the label rather than a spinner:
+  a spinner would be the one piece of generic SaaS furniture on the page. It is
+  linear because it represents indeterminate waiting, not a transition.
+*/
+.editorial-button.is-loading {
+  cursor: progress;
+  opacity: 1;
+}
+
+.editorial-button.is-loading .editorial-button__text {
+  position: relative;
+  opacity: 0.72;
+}
+
+.editorial-button.is-loading .editorial-button__text::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  bottom: -0.35em;
+  height: 1px;
+  background-color: currentColor;
+  transform-origin: left center;
+  animation: editorial-button-sweep 1100ms linear infinite;
+}
+
+@keyframes editorial-button-sweep {
+  0% { transform: scaleX(0); opacity: 0.25; }
+  50% { transform: scaleX(1); opacity: 0.9; }
+  100% { transform: scaleX(0); opacity: 0.25; transform-origin: right center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .editorial-button.is-loading .editorial-button__text::after {
+    animation: none;
+    transform: scaleX(1);
+    opacity: 0.5;
+  }
+}

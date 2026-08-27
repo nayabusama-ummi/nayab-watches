@@ -193,7 +193,7 @@ export const CartPage: React.FC = () => {
 
                 <div className="cart-summary-actions">
                   <EditorialButton
-                    to="/account"
+                    to="/checkout"
                     variant="primary"
                     size="lg"
                     className="cart-summary-btn"

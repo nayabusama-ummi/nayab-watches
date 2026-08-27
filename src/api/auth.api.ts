@@ -6,6 +6,8 @@ export interface UserProfile {
   email: string;
   phone?: string;
   avatar?: string;
+  /** Resolved from the database on every protected request, never trusted from here. */
+  role: 'CUSTOMER' | 'ADMIN';
   createdAt: string;
 }
 
@@ -21,9 +23,13 @@ export interface LoginPayload {
   password: string;
 }
 
+/**
+ * No token field. The session is an HttpOnly cookie set by the server and is
+ * deliberately unreadable from JavaScript — there is nothing for the client to
+ * store, and nothing an injected script could steal.
+ */
 export interface AuthResponse {
   user: UserProfile;
-  token?: string;
 }
 
 export const authApi = {
@@ -41,10 +47,8 @@ export const authApi = {
     });
   },
 
-  logout: (): Promise<{ message: string }> => {
-    return apiClient<{ message: string }>('/auth/logout', {
-      method: 'POST',
-    });
+  logout: (): Promise<{ message?: string }> => {
+    return apiClient<{ message?: string }>('/auth/logout', { method: 'POST' });
   },
 
   getMe: (): Promise<{ user: UserProfile }> => {
