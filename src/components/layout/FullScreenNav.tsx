@@ -253,14 +253,50 @@ export const FullScreenNav: React.FC<FullScreenNavProps> = ({
             <div className="fullscreen-nav__utilities">
               <span className="eyebrow fullscreen-nav__utility-eyebrow">Client Services</span>
               <div className="fullscreen-nav__utility-grid">
-                <Link
-                  to={user ? '/account' : '/login'}
-                  className="fullscreen-nav__utility-link"
-                  onClick={onClose}
-                >
-                  <User size={14} strokeWidth={1.5} />
-                  <span>{user ? `Client Profile (${user.name.split(' ')[0]})` : 'Client Sign In / Register'}</span>
-                </Link>
+                {user ? (
+                  <>
+                    <Link
+                      to="/account"
+                      className="fullscreen-nav__utility-link"
+                      onClick={onClose}
+                    >
+                      <User size={14} strokeWidth={1.5} />
+                      <span>Client Account ({user.name.split(' ')[0]})</span>
+                    </Link>
+
+                    {user.role === 'ADMIN' && (
+                      <Link
+                        to="/admin"
+                        className="fullscreen-nav__utility-link"
+                        onClick={onClose}
+                        style={{ color: 'var(--color-champagne-gold)' }}
+                      >
+                        <User size={14} strokeWidth={1.5} />
+                        <span>Admin Atelier Console</span>
+                      </Link>
+                    )}
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      to="/login"
+                      className="fullscreen-nav__utility-link"
+                      onClick={onClose}
+                    >
+                      <User size={14} strokeWidth={1.5} />
+                      <span>Client Sign In</span>
+                    </Link>
+
+                    <Link
+                      to="/register"
+                      className="fullscreen-nav__utility-link"
+                      onClick={onClose}
+                    >
+                      <User size={14} strokeWidth={1.5} />
+                      <span>Register Account</span>
+                    </Link>
+                  </>
+                )}
 
                 <Link
                   to="/wishlist"

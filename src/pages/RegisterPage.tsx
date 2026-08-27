@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { ArrowRight, Lock, AlertCircle } from 'lucide-react';
+import { ArrowRight, Lock, AlertCircle, Eye, EyeOff, ShieldCheck } from 'lucide-react';
 import { EditorialButton } from '../components/common/EditorialButton';
 import './AuthPages.css';
 
@@ -10,6 +10,7 @@ export const RegisterPage: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [phone, setPhone] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -73,17 +74,31 @@ export const RegisterPage: React.FC = () => {
             <p className="auth-split__quote-text">
               "A timepiece should feel inherited rather than simply purchased."
             </p>
+            <div className="auth-split__badge">
+              <ShieldCheck size={14} className="auth-split__badge-icon" />
+              <span>Lifetime Atelier Client Record</span>
+            </div>
           </div>
         </div>
 
         {/* Right: Registration Form */}
         <div className="auth-split__form-col">
           <div className="auth-form-card">
+            {/* Tab Switcher */}
+            <div className="auth-tabs">
+              <Link to={`/login${redirectPath !== '/account' ? `?redirect=${redirectPath}` : ''}`} className="auth-tab">
+                Sign In
+              </Link>
+              <Link to={`/register${redirectPath !== '/account' ? `?redirect=${redirectPath}` : ''}`} className="auth-tab auth-tab--active">
+                Create Account
+              </Link>
+            </div>
+
             <header className="auth-form-card__header">
               <span className="eyebrow">Client Registration</span>
               <h1 className="display-1 auth-form-card__title">Create Account</h1>
               <p className="body-standard auth-form-card__subtitle">
-                Register as a NAYAB client to preserve your wishlist, track acquisitions, and receive private horology communications.
+                Register as a NAYAB client to preserve your wishlist, track acquisitions, and manage shipping addresses.
               </p>
             </header>
 
@@ -122,7 +137,7 @@ export const RegisterPage: React.FC = () => {
                   autoComplete="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="name@domain.com"
+                  placeholder="client@domain.com"
                   className="auth-input"
                 />
               </div>
@@ -132,16 +147,26 @@ export const RegisterPage: React.FC = () => {
                   <label className="auth-label" htmlFor="register-password">
                     Password (8+ chars)
                   </label>
-                  <input
-                    id="register-password"
-                    type="password"
-                    required
-                    autoComplete="new-password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="••••••••"
-                    className="auth-input"
-                  />
+                  <div className="auth-password-wrapper">
+                    <input
+                      id="register-password"
+                      type={showPassword ? 'text' : 'password'}
+                      required
+                      autoComplete="new-password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      placeholder="••••••••"
+                      className="auth-input auth-input--password"
+                    />
+                    <button
+                      type="button"
+                      className="auth-password-toggle"
+                      onClick={() => setShowPassword(!showPassword)}
+                      aria-label={showPassword ? 'Hide password' : 'Show password'}
+                    >
+                      {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                    </button>
+                  </div>
                 </div>
 
                 <div className="auth-input-group">
@@ -150,7 +175,7 @@ export const RegisterPage: React.FC = () => {
                   </label>
                   <input
                     id="register-confirm-password"
-                    type="password"
+                    type={showPassword ? 'text' : 'password'}
                     required
                     autoComplete="new-password"
                     value={confirmPassword}
@@ -163,7 +188,7 @@ export const RegisterPage: React.FC = () => {
 
               <div className="auth-input-group">
                 <label className="auth-label" htmlFor="register-phone">
-                  Phone Number (Optional)
+                  Phone Number <span className="auth-label__opt">(Optional)</span>
                 </label>
                 <input
                   id="register-phone"
@@ -171,7 +196,7 @@ export const RegisterPage: React.FC = () => {
                   autoComplete="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  placeholder="+92 300 0000000"
+                  placeholder="+92 300 1234567"
                   className="auth-input"
                 />
               </div>
@@ -184,7 +209,7 @@ export const RegisterPage: React.FC = () => {
                   disabled={isSubmitting}
                   className="auth-form__submit-btn"
                 >
-                  {isSubmitting ? 'Registering Client...' : 'Register Client Account'}
+                  {isSubmitting ? 'Creating Client Record…' : 'Register Client Account'}
                   <ArrowRight size={16} />
                 </EditorialButton>
               </div>

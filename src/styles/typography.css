@@ -1,4 +1,4 @@
-/* Typography Design System */
+/* Typography Design System — Haute Horlogerie */
 
 .font-serif {
   font-family: var(--font-serif);
@@ -8,35 +8,38 @@
   font-family: var(--font-sans);
 }
 
-/* Editorial Display Headings */
+/* Editorial Display Headings with Optical Tracking */
 .display-hero {
   font-family: var(--font-serif);
   font-weight: 300;
-  font-size: clamp(2.75rem, 6.5vw, 6rem);
-  line-height: 1.05;
+  font-size: clamp(2.75rem, 6.2vw, 5.75rem);
+  line-height: 1.04;
   letter-spacing: -0.025em;
+  text-wrap: balance;
 }
 
 .display-1 {
   font-family: var(--font-serif);
   font-weight: 300;
-  font-size: clamp(2.25rem, 5vw, 4.25rem);
-  line-height: 1.1;
+  font-size: clamp(2.15rem, 4.5vw, 4rem);
+  line-height: 1.08;
   letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
 .display-2 {
   font-family: var(--font-serif);
-  font-weight: 400;
-  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 350;
+  font-size: clamp(1.65rem, 3.2vw, 2.6rem);
   line-height: 1.15;
   letter-spacing: -0.015em;
+  text-wrap: balance;
 }
 
 .display-3 {
   font-family: var(--font-serif);
   font-weight: 400;
-  font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
   line-height: 1.25;
   letter-spacing: -0.01em;
 }
@@ -44,72 +47,82 @@
 /* Restrained Eyebrows & Overlines */
 .eyebrow {
   font-family: var(--font-sans);
-  font-weight: 400;
-  font-size: 0.725rem;
+  font-weight: 500;
+  font-size: 0.6875rem;
   line-height: 1.2;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   color: var(--color-champagne-gold);
 }
 
 .eyebrow-muted {
   font-family: var(--font-sans);
-  font-weight: 400;
-  font-size: 0.725rem;
+  font-weight: 500;
+  font-size: 0.6875rem;
   line-height: 1.2;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   color: var(--color-charcoal-subtle);
 }
 
 .eyebrow-light {
   font-family: var(--font-sans);
-  font-weight: 400;
-  font-size: 0.725rem;
+  font-weight: 500;
+  font-size: 0.6875rem;
   line-height: 1.2;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.7);
 }
 
-/* Editorial Body */
+/* Editorial Body Text */
 .body-lead {
   font-family: var(--font-serif);
   font-weight: 300;
-  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  font-size: clamp(1.15rem, 1.8vw, 1.4rem);
   line-height: 1.6;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.005em;
+  text-wrap: pretty;
 }
 
 .body-standard {
   font-family: var(--font-sans);
-  font-weight: 300;
-  font-size: 0.95rem;
-  line-height: 1.65;
-  letter-spacing: 0.01em;
+  font-weight: 350;
+  font-size: 0.9375rem;
+  line-height: 1.68;
+  letter-spacing: 0.005em;
+  color: var(--color-charcoal-light);
 }
 
 .body-fine {
   font-family: var(--font-sans);
-  font-weight: 300;
-  font-size: 0.8rem;
-  line-height: 1.5;
-  letter-spacing: 0.02em;
+  font-weight: 350;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  letter-spacing: 0.015em;
+  color: var(--color-charcoal-subtle);
 }
 
-/* Watch Specification Pairs */
+/* Watch Specification Pairs with Tabular Numbers */
 .spec-label {
   font-family: var(--font-sans);
-  font-weight: 400;
-  font-size: 0.75rem;
+  font-weight: 500;
+  font-size: 0.6875rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.16em;
   color: var(--color-charcoal-subtle);
 }
 
 .spec-value {
   font-family: var(--font-serif);
   font-weight: 400;
-  font-size: 1.1rem;
+  font-size: 1.0625rem;
   letter-spacing: 0.01em;
+  font-variant-numeric: tabular-nums;
+}
+
+.price-display {
+  font-family: var(--font-serif);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
 }

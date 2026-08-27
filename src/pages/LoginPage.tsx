@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { ArrowRight, Lock, AlertCircle } from 'lucide-react';
+import { ArrowRight, Lock, AlertCircle, Eye, EyeOff, ShieldCheck } from 'lucide-react';
 import { EditorialButton } from '../components/common/EditorialButton';
 import './AuthPages.css';
 
 export const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -32,7 +33,7 @@ export const LoginPage: React.FC = () => {
       await login({ email, password });
       navigate(redirectPath);
     } catch (err: any) {
-      setErrorMessage(err.message || 'Invalid email or password. Please try again.');
+      setErrorMessage(err.message || 'Invalid email or password. Please verify your credentials.');
     } finally {
       setIsSubmitting(false);
     }
@@ -54,17 +55,31 @@ export const LoginPage: React.FC = () => {
             <p className="auth-split__quote-text">
               "Every timepiece acquired from NAYAB is registered in the permanent atelier archives in Lahore."
             </p>
+            <div className="auth-split__badge">
+              <ShieldCheck size={14} className="auth-split__badge-icon" />
+              <span>Authentic Horology Registry</span>
+            </div>
           </div>
         </div>
 
         {/* Right: Clean Editorial Form */}
         <div className="auth-split__form-col">
           <div className="auth-form-card">
+            {/* Tab Switcher */}
+            <div className="auth-tabs">
+              <Link to={`/login${redirectPath !== '/account' ? `?redirect=${redirectPath}` : ''}`} className="auth-tab auth-tab--active">
+                Sign In
+              </Link>
+              <Link to={`/register${redirectPath !== '/account' ? `?redirect=${redirectPath}` : ''}`} className="auth-tab">
+                Create Account
+              </Link>
+            </div>
+
             <header className="auth-form-card__header">
               <span className="eyebrow">Client Portal</span>
               <h1 className="display-1 auth-form-card__title">Sign In</h1>
               <p className="body-standard auth-form-card__subtitle">
-                Access your registered timepieces, private wishlist, and atelier concierge inquiries.
+                Access your registered acquisitions, private wishlist, and atelier orders.
               </p>
             </header>
 
@@ -87,7 +102,7 @@ export const LoginPage: React.FC = () => {
                   autoComplete="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="name@domain.com"
+                  placeholder="client@domain.com"
                   className="auth-input"
                 />
               </div>
@@ -98,16 +113,26 @@ export const LoginPage: React.FC = () => {
                     Password
                   </label>
                 </div>
-                <input
-                  id="login-password"
-                  type="password"
-                  required
-                  autoComplete="current-password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="••••••••"
-                  className="auth-input"
-                />
+                <div className="auth-password-wrapper">
+                  <input
+                    id="login-password"
+                    type={showPassword ? 'text' : 'password'}
+                    required
+                    autoComplete="current-password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="••••••••"
+                    className="auth-input auth-input--password"
+                  />
+                  <button
+                    type="button"
+                    className="auth-password-toggle"
+                    onClick={() => setShowPassword(!showPassword)}
+                    aria-label={showPassword ? 'Hide password' : 'Show password'}
+                  >
+                    {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                  </button>
+                </div>
               </div>
 
               <div className="auth-form__actions">
@@ -118,7 +143,7 @@ export const LoginPage: React.FC = () => {
                   disabled={isSubmitting}
                   className="auth-form__submit-btn"
                 >
-                  {isSubmitting ? 'Verifying Client...' : 'Sign In to Account'}
+                  {isSubmitting ? 'Verifying Client…' : 'Sign In to Account'}
                   <ArrowRight size={16} />
                 </EditorialButton>
               </div>
@@ -133,7 +158,7 @@ export const LoginPage: React.FC = () => {
               </p>
               <div className="auth-form-card__security">
                 <Lock size={12} />
-                <span>Secure 256-bit encrypted authentication</span>
+                <span>Encrypted HttpOnly cookie authentication</span>
               </div>
             </footer>
           </div>

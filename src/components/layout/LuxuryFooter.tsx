@@ -41,12 +41,13 @@ export const LuxuryFooter: React.FC = () => {
           </div>
 
           <div className="luxury-footer__col">
-            <h4 className="luxury-footer__heading">Account</h4>
+            <h4 className="luxury-footer__heading">Client Portal</h4>
             <ul className="luxury-footer__list">
-              <li><Link to="/account" className="luxury-footer__link">Client Sign In</Link></li>
+              <li><Link to="/login" className="luxury-footer__link">Client Sign In</Link></li>
+              <li><Link to="/register" className="luxury-footer__link">Register Account</Link></li>
+              <li><Link to="/account" className="luxury-footer__link">Client Dashboard</Link></li>
               <li><Link to="/wishlist" className="luxury-footer__link">Curated Wishlist</Link></li>
               <li><Link to="/cart" className="luxury-footer__link">Acquisition Bag</Link></li>
-              <li><a href="#concierge" className="luxury-footer__link">Private Appointment</a></li>
             </ul>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
 import { SearchDrawer } from '../search/SearchDrawer';
 import { BagDrawer } from '../cart/BagDrawer';
@@ -12,6 +13,7 @@ export const LuxuryNavbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
+  const { user } = useAuth();
   const { openBag, itemCount } = useCart();
   const location = useLocation();
 
@@ -100,7 +102,7 @@ export const LuxuryNavbar: React.FC = () => {
             </Link>
           </div>
 
-          {/* RIGHT: Minimal Search & Bag Utilities */}
+          {/* RIGHT: Search, Client Portal / Sign In & Bag Utilities */}
           <div className="luxury-navbar__right">
             <button
               className="luxury-navbar__utility-btn pressable"
@@ -110,8 +112,28 @@ export const LuxuryNavbar: React.FC = () => {
               <span className="luxury-navbar__utility-text">Search</span>
             </button>
 
-            <button
+            {user?.role === 'ADMIN' && (
+              <Link
+                to="/admin"
+                className="luxury-navbar__utility-btn luxury-navbar__admin-badge pressable"
+                aria-label="Admin Atelier Console"
+              >
+                <span className="luxury-navbar__utility-text">Admin</span>
+              </Link>
+            )}
+
+            <Link
+              to={user ? '/account' : '/login'}
               className="luxury-navbar__utility-btn pressable"
+              aria-label={user ? `Client Account (${user.name})` : 'Client Sign In'}
+            >
+              <span className="luxury-navbar__utility-text">
+                {user ? 'Account' : 'Sign In'}
+              </span>
+            </Link>
+
+            <button
+              className="luxury-navbar__utility-btn luxury-navbar__bag-btn pressable"
               onClick={openBag}
               aria-label={`Open Acquisition Bag (${itemCount} items)`}
             >

@@ -169,23 +169,36 @@
   color: inherit;
   padding: 0.5rem 0;
   cursor: pointer;
-  transition: opacity var(--duration-micro) var(--ease-luxury);
+  text-decoration: none;
+  transition: opacity var(--duration-micro) var(--ease-luxury), color var(--duration-micro) var(--ease-luxury);
 }
 
 .luxury-navbar__utility-text {
   font-family: var(--font-sans);
-  font-size: 0.775rem;
-  font-weight: 400;
+  font-size: 0.75rem;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   color: inherit;
   opacity: 0.88;
-  transition: opacity var(--duration-micro) var(--ease-luxury);
+  transition: opacity var(--duration-micro) var(--ease-luxury), color var(--duration-micro) var(--ease-luxury);
+}
+
+.luxury-navbar__admin-badge {
+  color: var(--color-champagne-gold) !important;
+}
+
+.luxury-navbar__admin-badge .luxury-navbar__utility-text {
+  border: 1px solid var(--border-gold);
+  padding: 0.2rem 0.55rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .luxury-navbar__utility-btn:hover .luxury-navbar__utility-text {
     opacity: 1;
+    color: var(--color-champagne-gold);
   }
 }
 
@@ -198,12 +211,16 @@
   }
 
   .luxury-navbar__logo {
-    font-size: 1.4rem;
-    letter-spacing: 0.24em;
-    text-indent: 0.24em;
+    font-size: 1.35rem;
+    letter-spacing: 0.22em;
+    text-indent: 0.22em;
   }
 
-  /* On small mobile, hide Search text in persistent header; it is accessible inside full-screen menu */
+  .luxury-navbar__right {
+    gap: 0.85rem;
+  }
+
+  /* On small mobile, hide Search in top bar since it is prominently inside menu */
   .luxury-navbar__utility-btn:first-child {
     display: none;
   }
