@@ -3,156 +3,99 @@ import bcrypt from 'bcryptjs';
 
 const prisma = new PrismaClient();
 
-/**
- * This seed is DESTRUCTIVE — it truncates every table before inserting. It is a
- * demo-data loader, not a migration, so it refuses to run against production
- * unless the operator states the intent explicitly.
- */
-const assertSafeToSeed = () => {
-  if (process.env.NODE_ENV !== 'production') return;
+const isProduction = process.env.NODE_ENV === 'production';
+const shouldSeedDemoAccounts =
+  process.env.SEED_DEMO_ACCOUNTS === 'true' || !isProduction;
 
-  if (process.env.ALLOW_PRODUCTION_SEED !== 'true') {
-    console.error(
-      '\n[NAYAB] Refusing to seed: NODE_ENV=production.\n' +
-        'This script DELETES all users, orders, products and collections.\n' +
-        'If you genuinely intend to wipe and reseed production, re-run with ' +
-        'ALLOW_PRODUCTION_SEED=true.\n'
-    );
-    process.exit(1);
-  }
+interface CollectionSeed {
+  slug: string;
+  name: string;
+  tagline: string;
+  description: string;
+  heroImage: string;
+  accentColor: string;
+  displayOrder: number;
+  isActive: boolean;
+}
 
-  console.warn(
-    '[NAYAB] ALLOW_PRODUCTION_SEED=true — wiping and reseeding a production database.'
-  );
-};
+const COLLECTIONS_DATA: CollectionSeed[] = [
+  {
+    slug: 'mehr',
+    name: 'MEHR',
+    tagline: 'Quiet Proportions · Precious Materials',
+    description: 'Quiet proportions. Precious materials. A formal expression of NAYAB.',
+    heroImage: '/images/sovereign-39-front.png',
+    accentColor: '#B8965D',
+    displayOrder: 1,
+    isActive: true,
+  },
+  {
+    slug: 'indus',
+    name: 'INDUS',
+    tagline: 'Integrated Architecture · Modern Movement',
+    description: 'Integrated architecture shaped for modern movement.',
+    heroImage: '/images/meridian-41-front.png',
+    accentColor: '#B9BDC2',
+    displayOrder: 2,
+    isActive: true,
+  },
+  {
+    slug: 'noor',
+    name: 'NOOR',
+    tagline: 'Measured Proportions · Quiet Brilliance',
+    description: 'Measured proportions and quiet brilliance.',
+    heroImage: '/images/noor-32-women.webp',
+    accentColor: '#D4B67F',
+    displayOrder: 3,
+    isActive: true,
+  },
+  {
+    slug: 'karakoram',
+    name: 'KARAKORAM',
+    tagline: 'High Altitude Precision · Enduring Endurance',
+    description: 'Precision engineered for altitude, distance and changing conditions.',
+    heroImage: '/images/collection-regatta.png',
+    accentColor: '#17342F',
+    displayOrder: 4,
+    isActive: true,
+  },
+  {
+    slug: 'zar',
+    name: 'ZAR',
+    tagline: 'Rare Metallurgy · High Mechanical Complications',
+    description: 'Rare materials and NAYAB\'s most complex mechanical work.',
+    heroImage: '/images/collection-atelier.png',
+    accentColor: '#B8965D',
+    displayOrder: 5,
+    isActive: true,
+  },
+];
 
-async function main() {
-  assertSafeToSeed();
+async function seedCollections(): Promise<Record<string, string>> {
+  const map: Record<string, string> = {};
 
-  console.log('Seeding NAYAB database...');
-
-  // Clean existing tables in reverse relation order. order_items → products is
-  // ON DELETE RESTRICT, so orders must go before products or this throws.
-  await prisma.orderItem.deleteMany();
-  await prisma.order.deleteMany();
-  await prisma.cartItem.deleteMany();
-  await prisma.cart.deleteMany();
-  await prisma.wishlistItem.deleteMany();
-  await prisma.productVariant.deleteMany();
-  await prisma.productImage.deleteMany();
-  await prisma.product.deleteMany();
-  await prisma.collection.deleteMany();
-  await prisma.address.deleteMany();
-  await prisma.user.deleteMany();
-
-  // 1. Seed Demo Client User
-  const passwordHash = await bcrypt.hash('Nayab@2026', 10);
-  const demoUser = await prisma.user.create({
-    data: {
-      name: 'Mian Tariq',
-      email: 'client@nayab.pk',
-      passwordHash,
-      phone: '+92 300 8400000',
-      role: 'CUSTOMER',
-    },
-  });
-  console.log('Created demo client user:', demoUser.email);
-
-  // A saved address so the checkout flow can be demonstrated without typing one.
-  await prisma.address.create({
-    data: {
-      userId: demoUser.id,
-      fullName: 'Mian Tariq',
-      phone: '+92 300 8400000',
-      addressLine1: '14-C, Zamzama Boulevard',
-      addressLine2: 'Phase V, DHA',
-      city: 'Karachi',
-      province: 'Sindh',
-      postalCode: '75500',
-      country: 'Pakistan',
-      isDefault: true,
-    },
-  });
-
-  /**
-   * Administrator. The password is a known demo credential and is printed below
-   * on purpose — this account exists so the private atelier views can be opened
-   * on a local machine. Change it before any deployment that is reachable.
-   */
-  const adminUser = await prisma.user.create({
-    data: {
-      name: 'NAYAB Atelier',
-      email: 'atelier@nayab.pk',
-      passwordHash: await bcrypt.hash(
-        process.env.SEED_ADMIN_PASSWORD || 'Atelier@2026',
-        10
-      ),
-      phone: '+92 42 3577 0000',
-      role: 'ADMIN',
-    },
-  });
-  console.log('Created administrator:', adminUser.email);
-
-  // 2. Seed Collections
-  const collectionsData = [
-    {
-      slug: 'mehr',
-      name: 'MEHR',
-      tagline: 'Quiet Proportions · Precious Materials',
-      description: 'Quiet proportions. Precious materials. A formal expression of NAYAB.',
-      heroImage: '/images/sovereign-39-front.png',
-      accentColor: '#B8965D',
-      displayOrder: 1,
-    },
-    {
-      slug: 'indus',
-      name: 'INDUS',
-      tagline: 'Integrated Architecture · Modern Movement',
-      description: 'Integrated architecture shaped for modern movement.',
-      heroImage: '/images/meridian-41-front.png',
-      accentColor: '#B9BDC2',
-      displayOrder: 2,
-    },
-    {
-      slug: 'noor',
-      name: 'NOOR',
-      tagline: 'Measured Proportions · Quiet Brilliance',
-      description: 'Measured proportions and quiet brilliance.',
-      heroImage: '/images/noor-32-women.webp',
-      accentColor: '#D4B67F',
-      displayOrder: 3,
-    },
-    {
-      slug: 'karakoram',
-      name: 'KARAKORAM',
-      tagline: 'High Altitude Precision · Enduring Endurance',
-      description: 'Precision engineered for altitude, distance and changing conditions.',
-      heroImage: '/images/collection-regatta.png',
-      accentColor: '#17342F',
-      displayOrder: 4,
-    },
-    {
-      slug: 'zar',
-      name: 'ZAR',
-      tagline: 'Rare Metallurgy · High Mechanical Complications',
-      description: 'Rare materials and NAYAB\'s most complex mechanical work.',
-      heroImage: '/images/collection-atelier.png',
-      accentColor: '#B8965D',
-      displayOrder: 5,
-    },
-  ];
-
-  const collectionsMap: Record<string, string> = {};
-
-  for (const c of collectionsData) {
-    const created = await prisma.collection.create({
-      data: c,
+  for (const c of COLLECTIONS_DATA) {
+    const record = await prisma.collection.upsert({
+      where: { slug: c.slug },
+      update: {
+        name: c.name,
+        tagline: c.tagline,
+        description: c.description,
+        heroImage: c.heroImage,
+        accentColor: c.accentColor,
+        displayOrder: c.displayOrder,
+        isActive: c.isActive,
+      },
+      create: c,
     });
-    collectionsMap[c.slug] = created.id;
+    map[c.slug] = record.id;
   }
-  console.log('Created 5 collections:', Object.keys(collectionsMap));
 
-  // 3. Seed Products
+  console.log(`[seed] Upserted ${Object.keys(map).length} collections: ${Object.keys(map).join(', ')}`);
+  return map;
+}
+
+async function seedProducts(collectionsMap: Record<string, string>) {
   const products = [
     {
       slug: 'sovereign-39',
@@ -257,7 +200,7 @@ async function main() {
       tagline: 'Architectural titanium and midnight-blue geometry.',
       shortDescription: 'Ultra-light Grade 5 titanium with an integrated tapering bracelet, textured midnight-blue dial, and micro-rotor automatic calibre.',
       description: 'The contemporary titanium flagship of NAYAB. Forged in ultra-light Grade 5 titanium with an integrated tapering bracelet, textured midnight-blue dial, and micro-rotor automatic calibre.',
-      narrative: 'Meridian 4draws structural inspiration from Indus architectural geometry. Alternating satin-brushed planes and mirror-polished facets create crisp light transitions across the monocoque case.',
+      narrative: 'Meridian 41 draws structural inspiration from Indus architectural geometry. Alternating satin-brushed planes and mirror-polished facets create crisp light transitions across the monocoque case.',
       price: BigInt(2950000), // PKR 2,950,000
       currency: 'PKR',
       caseMaterial: 'Grade 5 Titanium with satin and hand-polished facets',
@@ -474,26 +417,135 @@ async function main() {
 
   for (const p of products) {
     const { images, variants, ...productFields } = p;
-    const createdProduct = await prisma.product.create({
-      data: {
+
+    // Upsert product base
+    const createdProduct = await prisma.product.upsert({
+      where: { slug: p.slug },
+      update: {
         ...productFields,
-        images: {
-          create: images,
-        },
-        variants: {
-          create: variants,
-        },
+      },
+      create: {
+        ...productFields,
       },
     });
-    console.log(`Created product: ${createdProduct.name} (${createdProduct.reference})`);
+
+    // Sync product variants
+    for (const v of variants) {
+      await prisma.productVariant.upsert({
+        where: { sku: v.sku },
+        update: {
+          name: v.name,
+          material: v.material,
+          dialColor: v.dialColor,
+          strap: v.strap,
+          price: v.price,
+          stock: v.stock,
+          isActive: true,
+        },
+        create: {
+          ...v,
+          productId: createdProduct.id,
+        },
+      });
+    }
+
+    // Refresh images for product
+    await prisma.productImage.deleteMany({
+      where: { productId: createdProduct.id },
+    });
+    for (const img of images) {
+      await prisma.productImage.create({
+        data: {
+          ...img,
+          productId: createdProduct.id,
+        },
+      });
+    }
+
+    console.log(`[seed] Upserted product: ${createdProduct.name} (${createdProduct.reference})`);
+  }
+}
+
+async function seedDemoAccounts() {
+  if (!shouldSeedDemoAccounts) {
+    console.log('[seed] Skipping demo user and admin account creation (NODE_ENV=production).');
+    return;
   }
 
-  console.log('Seeding completed successfully!');
+  // 1. Upsert Demo Client User
+  const clientPassword = process.env.SEED_CLIENT_PASSWORD || 'Nayab@2026';
+  const clientPasswordHash = await bcrypt.hash(clientPassword, 10);
+  const demoUser = await prisma.user.upsert({
+    where: { email: 'client@nayab.pk' },
+    update: {
+      passwordHash: clientPasswordHash,
+      role: 'CUSTOMER',
+    },
+    create: {
+      name: 'Mian Tariq',
+      email: 'client@nayab.pk',
+      passwordHash: clientPasswordHash,
+      phone: '+92 300 8400000',
+      role: 'CUSTOMER',
+    },
+  });
+  console.log('[seed] Upserted demo client:', demoUser.email);
+
+  // Upsert demo address for client
+  const existingAddress = await prisma.address.findFirst({
+    where: { userId: demoUser.id },
+  });
+  if (!existingAddress) {
+    await prisma.address.create({
+      data: {
+        userId: demoUser.id,
+        fullName: 'Mian Tariq',
+        phone: '+92 300 8400000',
+        addressLine1: '14-C, Zamzama Boulevard',
+        addressLine2: 'Phase V, DHA',
+        city: 'Karachi',
+        province: 'Sindh',
+        postalCode: '75500',
+        country: 'Pakistan',
+        isDefault: true,
+      },
+    });
+    console.log('[seed] Created default demo address for client');
+  }
+
+  // 2. Upsert Admin User
+  const adminPassword = process.env.SEED_ADMIN_PASSWORD || 'Atelier@2026';
+  const adminPasswordHash = await bcrypt.hash(adminPassword, 10);
+  const adminUser = await prisma.user.upsert({
+    where: { email: 'atelier@nayab.pk' },
+    update: {
+      passwordHash: adminPasswordHash,
+      role: 'ADMIN',
+    },
+    create: {
+      name: 'NAYAB Atelier Master',
+      email: 'atelier@nayab.pk',
+      passwordHash: adminPasswordHash,
+      phone: '+92 42 3577 0000',
+      role: 'ADMIN',
+    },
+  });
+  console.log('[seed] Upserted administrator:', adminUser.email);
+}
+
+async function main() {
+  console.log(`[seed] Running NAYAB seed (mode: ${isProduction ? 'PRODUCTION' : 'DEVELOPMENT'})`);
+
+  const collectionsMap = await seedCollections();
+  await seedProducts(collectionsMap);
+  await seedDemoAccounts();
+
+  console.log('[seed] All seed operations completed successfully.');
 }
 
 main()
   .catch((e) => {
-    console.error('Seeding failed:', e);
+    console.error('[seed] Seeding failed:', e);
     process.exit(1);
   })
   .finally(async () => {

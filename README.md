@@ -108,7 +108,7 @@ npm install
 cd ..
 ```
 
-### Step 3: Database Migration & Seeding
+### Step 3: Database Migrations & Seeding
 
 ```bash
 cd backend
@@ -116,26 +116,25 @@ cd backend
 # Generate Prisma Client
 npm run prisma:generate
 
-# Push schema to database
-npm run prisma:push
+# In Development: Apply migrations and sync local database
+npm run prisma:migrate:dev
 
-# Seed authentic collections, products, variants, client, and admin accounts
+# In Production: Apply committed migrations safely from scratch
+npm run prisma:migrate:deploy
+
+# Seed authentic collections, products, variants, and optionally demo accounts
 npm run prisma:seed
 ```
 
-#### Default Seeded Credentials
-- **Atelier Administrator**:
-  - Email: `atelier@nayab.pk`
-  - Password: `Atelier@2026`
-  - Access: Full access to `/admin` dashboard, order state machine management, and inventory stock adjustments.
-- **Demo Registered Client**:
-  - Email: `client@nayab.pk`
-  - Password: `Nayab@2026`
-  - Access: Client account portal, saved addresses, private wishlist, order history.
+#### Production vs. Development Seed Policy
+- **Production (`NODE_ENV=production`)**: `npm run prisma:seed` upserts the 5 collections, 7 products, variants, and media non-destructively. Demo user and admin accounts with default passwords are **NOT** automatically created in public production.
+- **Development (`NODE_ENV=development`)**: Seeds the catalog as well as demo client (`client@nayab.pk` / `Nayab@2026`) and atelier admin (`atelier@nayab.pk` / `Atelier@2026`) for rapid local testing and concierge walkthroughs.
+- **Opt-in Production Demo Accounts**: Set `SEED_DEMO_ACCOUNTS=true` and provide a custom `SEED_ADMIN_PASSWORD` in your production environment variables if sandboxed demo credentials are explicitly required.
 
-### Step 4: Run Development Servers
+### Step 4: Run Development or Production Servers
 
 ```bash
+# Option A: Local Development (watch mode)
 # In backend directory (Terminal 1)
 npm run dev
 # Server running at http://127.0.0.1:5000
@@ -143,6 +142,17 @@ npm run dev
 # In root directory (Terminal 2)
 npm run dev
 # Frontend running at http://localhost:3000
+
+# Option B: Production Compiled Mode
+# Backend (compiled JS):
+cd backend
+npm run build
+npm start
+
+# Frontend (production preview):
+cd ..
+npm run build
+npm run preview
 ```
 
 ---
