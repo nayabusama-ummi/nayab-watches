@@ -175,7 +175,7 @@ export const FullScreenNav: React.FC<FullScreenNavProps> = ({
       }`}
       role="dialog"
       aria-modal="true"
-      aria-label="Maison Editorial Navigation"
+      aria-label="Editorial Navigation"
     >
       <div className="fullscreen-nav__backdrop" onClick={onClose} />
 

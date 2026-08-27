@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { X, Plus, Minus, Trash2, ArrowRight, ShieldCheck } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
@@ -7,6 +7,39 @@ import './BagDrawer.css';
 
 export const BagDrawer: React.FC = () => {
   const { cart, isBagOpen, closeBag, updateItem, removeItem, itemCount } = useCart();
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  // Scroll lock & keyboard accessibility
+  useEffect(() => {
+    if (isBagOpen) {
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+
+      const timer = setTimeout(() => {
+        closeButtonRef.current?.focus();
+      }, 50);
+      return () => clearTimeout(timer);
+    } else {
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+    }
+  }, [isBagOpen]);
+
+  // Handle Escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isBagOpen) {
+        closeBag();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+    };
+  }, [isBagOpen, closeBag]);
 
   if (!isBagOpen) return null;
 
@@ -29,6 +62,7 @@ export const BagDrawer: React.FC = () => {
             <h2 className="bag-drawer__title">Your Selection ({itemCount})</h2>
           </div>
           <button
+            ref={closeButtonRef}
             className="bag-drawer__close-btn pressable"
             onClick={closeBag}
             aria-label="Close Bag Drawer"

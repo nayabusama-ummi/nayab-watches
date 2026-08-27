@@ -37,7 +37,7 @@ export const App: React.FC = () => {
       <AuthProvider>
         <CartProvider>
           <ScrollToTop />
-          <div className="maison-app">
+          <div className="nayab-app">
             <LuxuryNavbar />
             <Routes>
               <Route path="/" element={<HomePage />} />

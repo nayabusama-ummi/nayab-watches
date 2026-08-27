@@ -3,7 +3,7 @@ import './SectionTransition.css';
 
 export const SectionTransition: React.FC = () => {
   return (
-    <section className="section-transition theme-ivory" aria-label="Maison Introduction">
+    <section className="section-transition theme-ivory" aria-label="Atelier Introduction">
       <div className="container text-center">
         <div className="section-transition__content">
           <span className="eyebrow section-transition__eyebrow">The Collection</span>

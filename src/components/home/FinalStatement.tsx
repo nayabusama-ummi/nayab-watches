@@ -4,10 +4,10 @@ import './FinalStatement.css';
 
 export const FinalStatement: React.FC = () => {
   return (
-    <section className="final-statement theme-ivory" aria-label="Maison Conclusion">
+    <section className="final-statement theme-ivory" aria-label="Atelier Conclusion">
       <div className="container text-center">
         <div className="final-statement__content">
-          <span className="eyebrow final-statement__eyebrow">The Maison Philosophy</span>
+          <span className="eyebrow final-statement__eyebrow">The Atelier Philosophy</span>
           <h2 className="display-hero final-statement__title">
             Not made for now.<br />
             Made for what remains.

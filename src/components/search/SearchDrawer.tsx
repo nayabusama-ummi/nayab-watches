@@ -23,17 +23,38 @@ export const SearchDrawer: React.FC<SearchDrawerProps> = ({ isOpen, onClose }) =
     return () => clearTimeout(handler);
   }, [searchTerm]);
 
-  // Focus input when opened
+  // Focus input & scroll lock when opened
   useEffect(() => {
     if (isOpen) {
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+
       setTimeout(() => {
         inputRef.current?.focus();
       }, 100);
     } else {
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
       setSearchTerm('');
       setDebouncedSearch('');
     }
   }, [isOpen]);
+
+  // Handle Escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+    };
+  }, [isOpen, onClose]);
 
   const { data, isLoading } = useProducts({
     search: debouncedSearch,

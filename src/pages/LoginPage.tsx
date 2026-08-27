@@ -52,7 +52,7 @@ export const LoginPage: React.FC = () => {
           <div className="auth-split__quote">
             <span className="eyebrow eyebrow-light">The Atelier Ledger</span>
             <p className="auth-split__quote-text">
-              "Every timepiece acquired from NAYAB is registered in the permanent maison archives in Lahore."
+              "Every timepiece acquired from NAYAB is registered in the permanent atelier archives in Lahore."
             </p>
           </div>
         </div>
@@ -126,7 +126,7 @@ export const LoginPage: React.FC = () => {
 
             <footer className="auth-form-card__footer">
               <p className="auth-form-card__footer-text">
-                New to the Maison?{' '}
+                New to NAYAB?{' '}
                 <Link to={`/register${redirectPath !== '/account' ? `?redirect=${redirectPath}` : ''}`} className="auth-link">
                   Register a new client account
                 </Link>

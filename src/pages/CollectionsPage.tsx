@@ -27,7 +27,7 @@ export const CollectionsPage: React.FC = () => {
         {/* Collections Overview */}
         {isLoading ? (
           <div className="page-loading">
-            <span className="page-loading__text">Loading maison portfolios...</span>
+            <span className="page-loading__text">Loading collections...</span>
           </div>
         ) : (
           <div className="collections-editorial-grid">

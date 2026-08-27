@@ -10,7 +10,7 @@ export const ArchiveSection: React.FC = () => {
       <div className="container">
         {/* Header */}
         <header className="archive-section__header">
-          <span className="eyebrow">Maison Chronicles</span>
+          <span className="eyebrow">Atelier Chronicles</span>
           <h2 className="display-1 archive-section__title">The Archive</h2>
           <p className="body-lead archive-section__intro">
             A contemporary Pakistani watch house built with an old-world respect for craft, documented through manual studies, geometric ledgers, and architectural blueprints.

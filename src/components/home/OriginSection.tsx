@@ -17,7 +17,7 @@ export const OriginSection: React.FC = () => {
               NAYAB is a contemporary Pakistani watch house exploring mechanical time through the country's traditions of precision craft, material artistry and architectural proportion.
             </p>
             <p className="body-standard origin-section__desc">
-              Built with an old-world respect for manual horology. From our Lahore atelier, we unite ancient regional metallurgy and Mughal geometric discipline with modern Swiss-calibre precision.
+              Built with an old-world respect for manual horology. From our Lahore atelier, we unite regional metallurgical traditions and Mughal geometric discipline with high-precision mechanical watchmaking.
             </p>
             <div className="origin-section__actions">
               <EditorialButton to="/#craftsmanship" variant="text" size="md">
