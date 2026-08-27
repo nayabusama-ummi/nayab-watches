@@ -1,0 +1,146 @@
+.editorial-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  transition: transform var(--duration-micro) var(--ease-luxury),
+              background-color var(--duration-ui) var(--ease-luxury),
+              color var(--duration-ui) var(--ease-luxury),
+              border-color var(--duration-ui) var(--ease-luxury),
+              box-shadow var(--duration-ui) var(--ease-luxury);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.editorial-button:active {
+  transform: scale(0.97);
+}
+
+.editorial-button:focus-visible {
+  outline: 2px solid var(--color-champagne-gold);
+  outline-offset: 3px;
+}
+
+/* Sizing */
+.editorial-button--sm {
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
+}
+
+.editorial-button--md {
+  font-size: 0.8125rem;
+  padding: 0.75rem 1.6rem;
+}
+
+.editorial-button--lg {
+  font-size: 0.875rem;
+  padding: 1rem 2.25rem;
+}
+
+/* Primary: Dark / Solid Ivory */
+.editorial-button--primary {
+  background-color: var(--color-warm-ivory);
+  color: var(--color-charcoal);
+  border: 1px solid var(--color-warm-ivory);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .editorial-button--primary:hover {
+    background-color: var(--color-warm-ivory-light);
+    border-color: var(--color-warm-ivory-light);
+    color: var(--color-deep-black);
+  }
+}
+
+/* Light / Solid on Dark */
+.editorial-button--light {
+  background-color: var(--color-warm-ivory);
+  color: var(--color-deep-black);
+  border: 1px solid var(--color-warm-ivory);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .editorial-button--light:hover {
+    background-color: transparent;
+    color: var(--color-warm-ivory);
+    border-color: var(--color-warm-ivory);
+  }
+}
+
+/* Secondary / Text + Arrow */
+.editorial-button--secondary {
+  background-color: transparent;
+  color: var(--color-warm-ivory);
+  padding-left: 0;
+  padding-right: 0;
+  border-bottom: 1px solid transparent;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .editorial-button--secondary:hover {
+    color: var(--color-champagne-gold);
+  }
+}
+
+/* Outline */
+.editorial-button--outline {
+  background-color: transparent;
+  color: var(--color-warm-ivory);
+  border: 1px solid var(--border-dark-emphasis);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .editorial-button--outline:hover {
+    border-color: var(--color-champagne-gold);
+    color: var(--color-champagne-gold);
+    background-color: rgba(184, 150, 93, 0.05);
+  }
+}
+
+/* Gold */
+.editorial-button--gold {
+  background-color: var(--color-champagne-gold);
+  color: var(--color-deep-black);
+  border: 1px solid var(--color-champagne-gold);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .editorial-button--gold:hover {
+    background-color: var(--color-champagne-gold-light);
+    border-color: var(--color-champagne-gold-light);
+  }
+}
+
+/* Text only with underline on hover */
+.editorial-button--text {
+  background-color: transparent;
+  color: inherit;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid currentColor;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .editorial-button--text:hover {
+    opacity: 0.7;
+  }
+}
+
+/* Arrow Glide Animation */
+.editorial-button__arrow-wrapper {
+  display: inline-flex;
+  align-items: center;
+  transition: transform var(--duration-ui) var(--ease-luxury);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .editorial-button:hover .editorial-button__arrow-wrapper {
+    transform: translateX(4px);
+  }
+}

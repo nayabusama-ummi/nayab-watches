@@ -1,0 +1,183 @@
+.collections-section {
+  background-color: var(--color-warm-ivory);
+  color: var(--color-charcoal);
+  border-top: 1px solid var(--border-light);
+}
+
+.collections-section__header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: flex-end;
+  margin-bottom: clamp(3.5rem, 6vw, 6rem);
+}
+
+.collections-section__title {
+  margin-top: 0.5rem;
+  color: var(--color-charcoal);
+}
+
+.collections-section__intro {
+  color: var(--color-charcoal-light);
+  max-width: 520px;
+}
+
+/* Row 1: 2 Large Flagship Tiles (16:10 aspect ratio) */
+.collections-section__row-top {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+/* Row 2: 3 Vertical Portfolio Tiles (4:5 aspect ratio) */
+.collections-section__row-bottom {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.collection-card {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-deep-black);
+  color: var(--color-warm-ivory);
+  border: 1px solid rgba(23, 23, 23, 0.08);
+}
+
+.collection-card--large {
+  aspect-ratio: 16 / 10;
+}
+
+.collection-card--standard {
+  aspect-ratio: 4 / 5;
+}
+
+.collection-card__link {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.collection-card__media {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.collection-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 800ms var(--ease-luxury);
+  will-change: transform;
+}
+
+.collection-card--mehr .collection-card__img,
+.collection-card--indus .collection-card__img {
+  object-fit: contain;
+  background-color: #141414;
+  padding: 2rem;
+}
+
+.collection-card__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(9, 9, 9, 0.92) 0%, rgba(9, 9, 9, 0.45) 45%, rgba(9, 9, 9, 0.1) 100%);
+  transition: opacity var(--duration-ui) var(--ease-luxury);
+}
+
+.collection-card__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  max-width: 480px;
+}
+
+.collection-card__tagline {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-champagne-gold);
+}
+
+.collection-card__title {
+  color: #FFFFFF;
+  line-height: 1.1;
+  font-size: clamp(1.6rem, 2.8vw, 2.25rem);
+}
+
+.collection-card__desc {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.5;
+}
+
+.collection-card__action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-sans);
+  font-size: 0.725rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-warm-ivory);
+  margin-top: 0.5rem;
+  opacity: 0.85;
+}
+
+.collection-card__arrow {
+  transition: transform var(--duration-ui) var(--ease-luxury);
+}
+
+/* Hover States (Emil Kowalski) */
+@media (hover: hover) and (pointer: fine) {
+  .collection-card:hover .collection-card__img {
+    transform: scale(1.03);
+  }
+
+  .collection-card:hover .collection-card__arrow {
+    transform: translateX(4px);
+  }
+
+  .collection-card:hover .collection-card__action {
+    color: var(--color-champagne-gold);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  .collections-section__header {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .collections-section__row-top,
+  .collections-section__row-bottom {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .collection-card--large,
+  .collection-card--standard {
+    aspect-ratio: 16 / 11;
+  }
+}

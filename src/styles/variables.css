@@ -1,0 +1,65 @@
+:root {
+  /* Brand Palette */
+  --color-warm-ivory: #F2ECE2;
+  --color-warm-ivory-light: #FBF8F3;
+  --color-warm-ivory-muted: #E5DDD0;
+  --color-warm-ivory-subtle: #D8CEBE;
+  
+  --color-charcoal: #171717;
+  --color-charcoal-muted: #242424;
+  --color-charcoal-light: #404040;
+  --color-charcoal-subtle: #737373;
+  
+  --color-deep-black: #090909;
+  --color-black-surface: #111111;
+  --color-black-elevated: #1A1A1A;
+  
+  --color-bottle-green: #17342F;
+  --color-bottle-green-light: #244F47;
+  --color-bottle-green-muted: #0F231F;
+  
+  --color-champagne-gold: #B8965D;
+  --color-champagne-gold-light: #D4B67F;
+  --color-champagne-gold-subtle: rgba(184, 150, 93, 0.15);
+  
+  --color-oxblood: #5A2227;
+  --color-oxblood-muted: #3D161A;
+  
+  --color-brushed-silver: #B9BDC2;
+  --color-brushed-silver-light: #E0E2E5;
+  
+  /* Borders & Dividers */
+  --border-light: rgba(23, 23, 23, 0.08);
+  --border-light-emphasis: rgba(23, 23, 23, 0.16);
+  --border-dark: rgba(255, 255, 255, 0.08);
+  --border-dark-emphasis: rgba(255, 255, 255, 0.18);
+  --border-gold: rgba(184, 150, 93, 0.3);
+
+  /* Typography */
+  --font-serif: 'Cormorant Garamond', Garamond, Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Layout & Grid */
+  --container-max-width: 1480px;
+  --container-wide-width: 1680px;
+  --container-narrow-width: 1080px;
+  
+  /* Navbar Height Tokens */
+  --nav-height-expanded: 82px;
+  --nav-height-condensed: 62px;
+  --mobile-header-height: 60px;
+
+  /* Major Section Spacing Rhythm */
+  --section-spacing-lg: clamp(7rem, 12vw, 11rem);
+  --section-spacing-md: clamp(4.5rem, 8vw, 7.5rem);
+  --section-spacing-sm: clamp(3rem, 5vw, 4.5rem);
+
+  /* Emil Kowalski Motion Curves & Durations */
+  --ease-luxury: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --duration-micro: 160ms;
+  --duration-ui: 240ms;
+  --duration-modal: 400ms;
+  --duration-cinematic: 800ms;
+}

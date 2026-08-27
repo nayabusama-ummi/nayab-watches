@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+.npm/
+
+# Build output
+dist/
+build/
+*.tsbuildinfo
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Loose source media at repo root (duplicates of public/media and public/images)
+/*.mp4
+/*.png
+/*.jfif
+/*.jpg
+/*.jpeg
+/*.webp
+
+# Logs
+*.log
+npm-debug.log*
+logs/
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Test / coverage
+coverage/
+.vitest/

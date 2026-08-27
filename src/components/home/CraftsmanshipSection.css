@@ -1,0 +1,139 @@
+.craftsmanship {
+  background-color: var(--color-deep-black);
+  color: var(--color-warm-ivory);
+  position: relative;
+}
+
+.craftsmanship__grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: clamp(3.5rem, 7vw, 7rem);
+  align-items: center;
+}
+
+/* Left Media Column with Controlled Secondary Offset */
+.craftsmanship__media-col {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.craftsmanship__main-frame {
+  width: 100%;
+  aspect-ratio: 4 / 4.6;
+  position: relative;
+  overflow: hidden;
+  background-color: #111111;
+  border: 1px solid var(--border-dark);
+}
+
+.craftsmanship__secondary-frame {
+  width: 65%;
+  aspect-ratio: 16 / 10;
+  position: absolute;
+  bottom: -2.5rem;
+  right: -2rem;
+  overflow: hidden;
+  background-color: #161616;
+  border: 1px solid var(--border-dark-emphasis);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.85);
+  z-index: 3;
+}
+
+.craftsmanship__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(108%);
+  transition: transform 700ms var(--ease-luxury);
+}
+
+.craftsmanship__caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.85rem 1.25rem;
+  background: linear-gradient(to top, rgba(9, 9, 9, 0.92) 0%, transparent 100%);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.02em;
+  z-index: 2;
+}
+
+/* Right Content Column */
+.craftsmanship__content-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 580px;
+}
+
+.craftsmanship__statement {
+  color: #FFFFFF;
+  margin-top: -0.25rem;
+}
+
+.craftsmanship__lead {
+  color: rgba(242, 236, 226, 0.9);
+  line-height: 1.6;
+}
+
+/* Qualitative Craftsmanship Pillars */
+.craftsmanship__pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.75rem 0;
+  border-top: 1px solid var(--border-dark);
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.craftsmanship__pillar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.craftsmanship__pillar-title {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-champagne-gold);
+}
+
+.craftsmanship__pillar-desc {
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.55;
+}
+
+.craftsmanship__cta {
+  margin-top: 0.5rem;
+}
+
+/* Responsive Stacking */
+@media (max-width: 1100px) {
+  .craftsmanship__secondary-frame {
+    bottom: -1.5rem;
+    right: -1rem;
+    width: 60%;
+  }
+}
+
+@media (max-width: 900px) {
+  .craftsmanship__grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  .craftsmanship__secondary-frame {
+    position: static;
+    width: 100%;
+    margin-top: 1.5rem;
+    aspect-ratio: 16 / 9;
+  }
+}

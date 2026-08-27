@@ -1,0 +1,115 @@
+/* Typography Design System */
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Editorial Display Headings */
+.display-hero {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(2.75rem, 6.5vw, 6rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+.display-1 {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(2.25rem, 5vw, 4.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.display-2 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+.display-3 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+/* Restrained Eyebrows & Overlines */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 0.725rem;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-champagne-gold);
+}
+
+.eyebrow-muted {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 0.725rem;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-charcoal-subtle);
+}
+
+.eyebrow-light {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 0.725rem;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Editorial Body */
+.body-lead {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+.body-standard {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+}
+
+.body-fine {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+/* Watch Specification Pairs */
+.spec-label {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-charcoal-subtle);
+}
+
+.spec-value {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.1rem;
+  letter-spacing: 0.01em;
+}
