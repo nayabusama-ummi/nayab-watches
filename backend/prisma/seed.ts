@@ -3,10 +3,38 @@ import bcrypt from 'bcryptjs';
 
 const prisma = new PrismaClient();
 
+/**
+ * This seed is DESTRUCTIVE — it truncates every table before inserting. It is a
+ * demo-data loader, not a migration, so it refuses to run against production
+ * unless the operator states the intent explicitly.
+ */
+const assertSafeToSeed = () => {
+  if (process.env.NODE_ENV !== 'production') return;
+
+  if (process.env.ALLOW_PRODUCTION_SEED !== 'true') {
+    console.error(
+      '\n[NAYAB] Refusing to seed: NODE_ENV=production.\n' +
+        'This script DELETES all users, orders, products and collections.\n' +
+        'If you genuinely intend to wipe and reseed production, re-run with ' +
+        'ALLOW_PRODUCTION_SEED=true.\n'
+    );
+    process.exit(1);
+  }
+
+  console.warn(
+    '[NAYAB] ALLOW_PRODUCTION_SEED=true — wiping and reseeding a production database.'
+  );
+};
+
 async function main() {
+  assertSafeToSeed();
+
   console.log('Seeding NAYAB database...');
 
-  // Clean existing tables in reverse relation order
+  // Clean existing tables in reverse relation order. order_items → products is
+  // ON DELETE RESTRICT, so orders must go before products or this throws.
+  await prisma.orderItem.deleteMany();
+  await prisma.order.deleteMany();
   await prisma.cartItem.deleteMany();
   await prisma.cart.deleteMany();
   await prisma.wishlistItem.deleteMany();
@@ -14,6 +42,7 @@ async function main() {
   await prisma.productImage.deleteMany();
   await prisma.product.deleteMany();
   await prisma.collection.deleteMany();
+  await prisma.address.deleteMany();
   await prisma.user.deleteMany();
 
   // 1. Seed Demo Client User
@@ -24,9 +53,45 @@ async function main() {
       email: 'client@nayab.pk',
       passwordHash,
       phone: '+92 300 8400000',
+      role: 'CUSTOMER',
     },
   });
   console.log('Created demo client user:', demoUser.email);
+
+  // A saved address so the checkout flow can be demonstrated without typing one.
+  await prisma.address.create({
+    data: {
+      userId: demoUser.id,
+      fullName: 'Mian Tariq',
+      phone: '+92 300 8400000',
+      addressLine1: '14-C, Zamzama Boulevard',
+      addressLine2: 'Phase V, DHA',
+      city: 'Karachi',
+      province: 'Sindh',
+      postalCode: '75500',
+      country: 'Pakistan',
+      isDefault: true,
+    },
+  });
+
+  /**
+   * Administrator. The password is a known demo credential and is printed below
+   * on purpose — this account exists so the private atelier views can be opened
+   * on a local machine. Change it before any deployment that is reachable.
+   */
+  const adminUser = await prisma.user.create({
+    data: {
+      name: 'NAYAB Atelier',
+      email: 'atelier@nayab.pk',
+      passwordHash: await bcrypt.hash(
+        process.env.SEED_ADMIN_PASSWORD || 'Atelier@2026',
+        10
+      ),
+      phone: '+92 42 3577 0000',
+      role: 'ADMIN',
+    },
+  });
+  console.log('Created administrator:', adminUser.email);
 
   // 2. Seed Collections
   const collectionsData = [

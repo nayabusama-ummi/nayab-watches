@@ -13,6 +13,20 @@ enum ProductAvailability {
   OUT_OF_STOCK
 }
 
+enum Role {
+  CUSTOMER
+  ADMIN
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
 enum ProductImageType {
   HERO
   FRONT
@@ -52,7 +66,7 @@ model Product {
   shortDescription String
   description      String
   narrative        String?
-  price            BigInt              // Price stored in minor units (PKR integer, e.g. 3850000)
+  price            BigInt              // Whole PKR (major units), e.g. 3850000 = PKR 3,850,000
   currency         String              @default("PKR")
   caseMaterial     String
   caseDiameter     String
@@ -76,6 +90,7 @@ model Product {
   variants         ProductVariant[]
   wishlistItems    WishlistItem[]
   cartItems        CartItem[]
+  orderItems       OrderItem[]
 
   @@index([collectionId])
   @@index([slug])
@@ -122,11 +137,14 @@ model User {
   passwordHash String
   phone        String?
   avatar       String?
+  role         Role           @default(CUSTOMER)
   createdAt    DateTime       @default(now())
   updatedAt    DateTime       @updatedAt
 
   wishlist     WishlistItem[]
   cart         Cart?
+  addresses    Address[]
+  orders       Order[]
 
   @@index([email])
   @@map("users")
@@ -176,4 +194,95 @@ model CartItem {
   @@unique([cartId, productId, variantId])
   @@index([cartId])
   @@map("cart_items")
+}
+
+model Address {
+  id           String   @id @default(cuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  fullName     String
+  phone        String
+  addressLine1 String
+  addressLine2 String?
+  city         String
+  province     String
+  postalCode   String?
+  country      String   @default("Pakistan")
+  isDefault    Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  orders       Order[]
+
+  @@index([userId])
+  @@map("addresses")
+}
+
+model Order {
+  id          String      @id @default(cuid())
+  orderNumber String      @unique
+  userId      String
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  status      OrderStatus @default(PENDING)
+
+  // Authoritative money, server-computed. BigInt whole PKR (see docs/MONEY.md).
+  subtotal    BigInt
+  shipping    BigInt      @default(0)
+  total       BigInt
+  currency    String      @default("PKR")
+
+  // Simulated payment only. No real funds move. Documented in README.
+  paymentMethod String    @default("SIMULATED")
+
+  // Shipping address SNAPSHOT. Denormalised on purpose so order history stays
+  // truthful even if the customer later edits or deletes the source address.
+  addressId          String?
+  address            Address? @relation(fields: [addressId], references: [id], onDelete: SetNull)
+  shipFullName       String
+  shipPhone          String
+  shipAddressLine1   String
+  shipAddressLine2   String?
+  shipCity           String
+  shipProvince       String
+  shipPostalCode     String?
+  shipCountry        String
+
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  items       OrderItem[]
+
+  @@index([userId])
+  @@index([status])
+  @@index([createdAt])
+  @@map("orders")
+}
+
+model OrderItem {
+  id        String  @id @default(cuid())
+  orderId   String
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  // Restrict, not Cascade: a product that appears in an order must be
+  // deactivated rather than deleted, so history can never be orphaned.
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Restrict)
+  variantId String?
+
+  // Catalogue SNAPSHOTS taken at purchase time.
+  productNameSnapshot String
+  referenceSnapshot   String
+  variantSnapshot     String?
+  productSlugSnapshot String
+  imageUrlSnapshot    String?
+
+  quantity  Int
+  unitPrice BigInt
+  lineTotal BigInt
+
+  createdAt DateTime @default(now())
+
+  @@index([orderId])
+  @@index([productId])
+  @@map("order_items")
 }

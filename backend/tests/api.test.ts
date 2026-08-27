@@ -5,7 +5,6 @@ import { createApp } from '../src/app.js';
 const app = createApp();
 
 describe('NAYAB Fine Watchmaking API Integration Tests', () => {
-  let authToken = '';
   let authCookie = '';
   let sovereignProductId = '';
   let meridianProductId = '';
@@ -140,11 +139,15 @@ describe('NAYAB Fine Watchmaking API Integration Tests', () => {
 
     expect(res.status).toBe(201);
     expect(res.body.data.user.email).toBe(uniqueEmail);
-    expect(res.body.data.token).toBeDefined();
+    // The JWT must NEVER appear in the response body — cookie only, so that no
+    // client can copy it into localStorage.
+    expect(res.body.data.token).toBeUndefined();
+    expect(res.body.data.user.passwordHash).toBeUndefined();
 
     const cookies = res.headers['set-cookie'];
     expect(cookies).toBeDefined();
     expect(cookies[0]).toContain('nayab_auth_token=');
+    expect(cookies[0]).toContain('HttpOnly');
   });
 
   it('POST /api/auth/login logs in existing user', async () => {
@@ -155,7 +158,7 @@ describe('NAYAB Fine Watchmaking API Integration Tests', () => {
 
     expect(res.status).toBe(200);
     expect(res.body.data.user.email).toBe('client@nayab.pk');
-    authToken = res.body.data.token;
+    expect(res.body.data.token).toBeUndefined();
     authCookie = res.headers['set-cookie'][0];
   });
 

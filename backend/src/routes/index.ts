@@ -4,6 +4,9 @@ import collectionRoutes from './collectionRoutes.js';
 import productRoutes from './productRoutes.js';
 import wishlistRoutes from './wishlistRoutes.js';
 import cartRoutes from './cartRoutes.js';
+import orderRoutes from './orderRoutes.js';
+import addressRoutes from './addressRoutes.js';
+import adminRoutes from './adminRoutes.js';
 
 const router = Router();
 
@@ -21,5 +24,8 @@ router.use('/collections', collectionRoutes);
 router.use('/products', productRoutes);
 router.use('/wishlist', wishlistRoutes);
 router.use('/cart', cartRoutes);
+router.use('/orders', orderRoutes);
+router.use('/addresses', addressRoutes);
+router.use('/admin', adminRoutes);
 
 export default router;
