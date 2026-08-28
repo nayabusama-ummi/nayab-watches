@@ -134,7 +134,7 @@
 .search-overlay__item-thumb {
   width: 70px;
   height: 70px;
-  background-color: #EFE8DD;
+  background-color: var(--color-warm-ivory-surface);
   display: flex;
   align-items: center;
   justify-content: center;

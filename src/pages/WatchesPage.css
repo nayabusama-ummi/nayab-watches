@@ -158,18 +158,18 @@
 
 .watches-filter-btn:hover {
   border-color: var(--color-champagne-gold);
-  background-color: #faf8f5;
+  background-color: var(--color-warm-ivory-surface);
   color: var(--color-charcoal);
 }
 
 .watches-filter-btn--active {
   border-color: var(--color-champagne-gold);
-  background-color: #121314;
+  background-color: var(--color-charcoal);
   color: #fff;
 }
 
 .watches-filter-btn--active:hover {
-  background-color: #1a1c1e;
+  background-color: var(--color-black-inset);
   color: #fff;
 }
 
@@ -181,7 +181,7 @@
   height: 18px;
   border-radius: 50%;
   background-color: var(--color-champagne-gold);
-  color: #121314;
+  color: var(--color-deep-black);
   font-size: 0.7rem;
   font-weight: 600;
 }
@@ -520,8 +520,8 @@
   max-width: 580px;
   margin: 4rem auto;
   padding: 3.5rem 2rem;
-  background-color: #f6f3ee;
-  border: 1px solid var(--color-border-warm);
+  background-color: var(--color-warm-ivory-surface);
+  border: 1px solid var(--border-light);
   border-radius: 4px;
 }
 
@@ -556,7 +556,7 @@
 .watches-skeleton-card__img {
   width: 100%;
   aspect-ratio: 4 / 5;
-  background: linear-gradient(90deg, #edeae3 25%, #f5f2eb 50%, #edeae3 75%);
+  background: linear-gradient(90deg, var(--color-warm-ivory-border) 25%, var(--color-warm-ivory-surface) 50%, var(--color-warm-ivory-border) 75%);
   background-size: 200% 100%;
   animation: watchesShimmer 1.5s infinite;
   border-radius: 4px;
@@ -565,21 +565,21 @@
 .watches-skeleton-card__ref {
   width: 30%;
   height: 12px;
-  background-color: #edeae3;
+  background-color: var(--color-warm-ivory-border);
   border-radius: 2px;
 }
 
 .watches-skeleton-card__title {
   width: 65%;
   height: 20px;
-  background-color: #edeae3;
+  background-color: var(--color-warm-ivory-border);
   border-radius: 2px;
 }
 
 .watches-skeleton-card__price {
   width: 45%;
   height: 16px;
-  background-color: #edeae3;
+  background-color: var(--color-warm-ivory-border);
   border-radius: 2px;
 }
 
@@ -719,8 +719,8 @@
 .watches-filter-choice {
   text-align: left;
   padding: 0.6rem 0.85rem;
-  background-color: #fbf9f5;
-  border: 1px solid var(--color-border-warm);
+  background-color: var(--color-warm-ivory);
+  border: 1px solid var(--border-light);
   border-radius: 4px;
   font-family: var(--font-sans);
   font-size: 0.825rem;
@@ -731,19 +731,19 @@
 
 .watches-filter-choice:hover {
   border-color: var(--color-champagne-gold);
-  background-color: #f5f2eb;
+  background-color: var(--color-warm-ivory-surface);
 }
 
 .watches-filter-choice--selected {
-  background-color: #121314;
-  border-color: #121314;
+  background-color: var(--color-charcoal);
+  border-color: var(--color-charcoal);
   color: #fff;
   font-weight: 500;
 }
 
 .watches-filter-choice--selected:hover {
-  background-color: #1a1c1e;
-  border-color: #1a1c1e;
+  background-color: var(--color-black-inset);
+  border-color: var(--color-black-inset);
   color: #fff;
 }
 
@@ -753,8 +753,8 @@
   justify-content: flex-end;
   gap: 1rem;
   padding: 1.25rem 1.75rem;
-  border-top: 1px solid var(--color-border-warm);
-  background-color: #fbf9f5;
+  border-top: 1px solid var(--border-light);
+  background-color: var(--color-warm-ivory-surface);
 }
 
 .watches-drawer__reset-btn {
@@ -786,7 +786,7 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background-color: #121314;
+  background-color: var(--color-charcoal);
   color: var(--color-warm-ivory);
   border: 1px solid rgba(197, 165, 102, 0.4);
   display: flex;
@@ -799,7 +799,7 @@
 }
 
 .watches-back-to-top:hover {
-  background-color: #1a1c1e;
+  background-color: var(--color-black-inset);
   border-color: var(--color-champagne-gold);
   transform: translateY(-3px);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);

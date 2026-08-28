@@ -86,7 +86,7 @@
 .collection-card--mehr .collection-card__img,
 .collection-card--indus .collection-card__img {
   object-fit: contain;
-  background-color: #141414;
+  background-color: var(--color-black-surface);
   padding: 2rem;
 }
 

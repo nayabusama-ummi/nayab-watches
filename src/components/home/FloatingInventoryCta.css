@@ -44,7 +44,7 @@
 }
 
 .floating-inventory-pill:hover {
-  background-color: #1a1c1e;
+  background-color: var(--color-black-inset);
   border-color: var(--color-champagne-gold);
   transform: translateY(-2px);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35),

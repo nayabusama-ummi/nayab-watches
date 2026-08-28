@@ -1,21 +1,35 @@
 :root {
-  /* Brand Palette — Restrained Luxury & High Legibility */
-  --color-warm-ivory: #F8F6F0;
-  --color-warm-ivory-light: #FDFAF5;
-  --color-warm-ivory-muted: #EBE5DB;
+  /* ==========================================================================
+     1. STANDARDIZED LIGHT NEUTRAL PALETTE (3-TIER SYSTEM)
+     Eliminates redundant near-identical light shades for pure aesthetic unity
+     ========================================================================== */
+  --color-warm-ivory: #F8F6F0;          /* Tier 1: Signature NAYAB Ivory Canvas */
+  --color-warm-ivory-surface: #EFE8DD;  /* Tier 2: Elevated Card / Inset / Table Layer */
+  --color-warm-ivory-border: #DFD7C9;   /* Tier 3: Hairline Divider / Skeleton / Accent Inset */
+
+  /* Backward-compatible aliases for legacy light variables */
+  --color-warm-ivory-light: #F8F6F0;
+  --color-warm-ivory-muted: #EFE8DD;
   --color-warm-ivory-subtle: #DFD7C9;
   
+  /* ==========================================================================
+     2. STANDARDIZED DARK ELEVATION SYSTEM (3-TIER SYSTEM)
+     Unified dark hierarchy: Deep Space -> Elevated Surface -> Inset / Pill
+     ========================================================================== */
+  --color-deep-black: #070707;          /* Tier 1: Pure Cinema Canvas & Fullscreen Sections */
+  --color-black-surface: #121212;       /* Tier 2: Elevated Cards, Panels, Drawers, Modals */
+  --color-black-inset: #1C1C1E;         /* Tier 3: Interactive Inset, Badge Pill, Input Box */
+  --color-black-elevated: #18181A;      /* Tier 3b: Hover states on dark surfaces */
+
+  /* Text & Primary Charcoal */
   --color-charcoal: #111111;
   --color-charcoal-muted: #1C1C1E;
   --color-charcoal-light: #2C2C2E;
   --color-charcoal-subtle: #48484A;
   --color-charcoal-faint: #7C7C80;
-  
-  --color-deep-black: #070707;
-  --color-black-surface: #0E0E0E;
-  --color-black-elevated: #161616;
   --color-black-border: rgba(255, 255, 255, 0.12);
   
+  /* Brand Heritage Accents */
   --color-bottle-green: #142F2A;
   --color-bottle-green-light: #1D443D;
   --color-bottle-green-muted: #0D201C;
@@ -45,7 +59,9 @@
   --border-gold: rgba(197, 165, 102, 0.45);
   --border-gold-subtle: rgba(197, 165, 102, 0.25);
 
-  /* Typography */
+  /* ==========================================================================
+     3. TYPOGRAPHY SYSTEM (STRICT SERIF HEADINGS + SANS DATA / BODY)
+     ========================================================================== */
   --font-serif: 'Cormorant Garamond', Garamond, Georgia, 'Times New Roman', serif;
   --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   

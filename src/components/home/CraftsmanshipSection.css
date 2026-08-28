@@ -23,7 +23,7 @@
   aspect-ratio: 4 / 4.6;
   position: relative;
   overflow: hidden;
-  background-color: #111111;
+  background-color: var(--color-deep-black);
   border: 1px solid var(--border-dark);
 }
 
@@ -34,7 +34,7 @@
   bottom: -2.5rem;
   right: -2rem;
   overflow: hidden;
-  background-color: #161616;
+  background-color: var(--color-black-surface);
   border: 1px solid var(--border-dark-emphasis);
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.85);
   z-index: 3;

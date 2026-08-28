@@ -26,6 +26,14 @@ body {
   color: var(--color-warm-ivory);
 }
 
+/* Core Heading Typography Discipline — Cormorant Garamond Serif */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  letter-spacing: -0.015em;
+  color: inherit;
+}
+
 /* Ensure all anchored sections offset for the fixed navbar */
 section[id] {
   scroll-margin-top: calc(var(--nav-height-condensed) + 1.5rem);

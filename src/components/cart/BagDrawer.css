@@ -126,7 +126,7 @@
 .bag-drawer__item-thumb {
   width: 90px;
   height: 105px;
-  background-color: #EFE8DD;
+  background-color: var(--color-warm-ivory-surface);
   display: flex;
   align-items: center;
   justify-content: center;
