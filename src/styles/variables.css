@@ -50,6 +50,7 @@
   --container-narrow-width: 1040px;
   
   /* Navbar Height Tokens */
+  --nav-height: 84px;
   --nav-height-expanded: 84px;
   --nav-height-condensed: 66px;
   --mobile-header-height: 64px;
@@ -76,4 +77,8 @@
   --shadow-card: 0 12px 36px rgba(0, 0, 0, 0.06);
   --shadow-elevated: 0 24px 64px rgba(0, 0, 0, 0.12);
   --shadow-dark-card: 0 16px 48px rgba(0, 0, 0, 0.45);
+
+  /* Account / Utility Page Spacing */
+  --account-page-padding-top: clamp(2rem, 3vw, 3rem);
+  --account-page-padding-bottom: clamp(3rem, 5vw, 5rem);
 }

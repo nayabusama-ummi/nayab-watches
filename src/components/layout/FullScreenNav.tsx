@@ -12,7 +12,7 @@ interface FullScreenNavProps {
   itemCount: number;
 }
 
-type PreviewKey = 'collections' | 'new-models' | 'the-house' | 'craftsmanship';
+type PreviewKey = 'collections' | 'all-timepieces' | 'new-models' | 'the-house' | 'craftsmanship';
 
 interface PreviewContent {
   eyebrow: string;
@@ -29,6 +29,13 @@ const PREVIEWS: Record<PreviewKey, PreviewContent> = {
     image: '/images/sovereign-39-front.png',
     ctaText: 'Explore All Collections',
     ctaPath: '/collections',
+  },
+  'all-timepieces': {
+    eyebrow: 'Complete Inventory',
+    title: 'Every expression of NAYAB',
+    image: '/images/sovereign-39-front.png',
+    ctaText: 'View All Timepieces',
+    ctaPath: '/watches',
   },
   'new-models': {
     eyebrow: 'Flagship Creations 2026',
@@ -120,6 +127,13 @@ export const FullScreenNav: React.FC<FullScreenNavProps> = ({
     },
     {
       num: '02',
+      title: 'All Timepieces',
+      path: '/watches',
+      previewKey: 'all-timepieces' as PreviewKey,
+      isAnchor: false,
+    },
+    {
+      num: '03',
       title: 'New Models',
       path: '/#new-models',
       targetId: 'new-models',
@@ -127,7 +141,7 @@ export const FullScreenNav: React.FC<FullScreenNavProps> = ({
       isAnchor: true,
     },
     {
-      num: '03',
+      num: '04',
       title: 'The House',
       path: '/#origin',
       targetId: 'origin',
@@ -135,7 +149,7 @@ export const FullScreenNav: React.FC<FullScreenNavProps> = ({
       isAnchor: true,
     },
     {
-      num: '04',
+      num: '05',
       title: 'Craftsmanship',
       path: '/#craftsmanship',
       targetId: 'craftsmanship',

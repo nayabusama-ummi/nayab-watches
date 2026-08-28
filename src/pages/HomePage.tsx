@@ -10,6 +10,7 @@ import { ExplodedViewSection } from '../components/home/ExplodedViewSection';
 import { CollectionsSection } from '../components/home/CollectionsSection';
 import { ArchiveSection } from '../components/home/ArchiveSection';
 import { FinalStatement } from '../components/home/FinalStatement';
+import { FloatingInventoryCta } from '../components/home/FloatingInventoryCta';
 
 export const HomePage: React.FC = () => {
   const location = useLocation();
@@ -46,6 +47,7 @@ export const HomePage: React.FC = () => {
       <CollectionsSection />
       <ArchiveSection />
       <FinalStatement />
+      <FloatingInventoryCta />
     </main>
   );
 };

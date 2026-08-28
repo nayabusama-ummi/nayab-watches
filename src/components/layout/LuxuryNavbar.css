@@ -35,6 +35,13 @@
   border-bottom: 1px solid transparent;
 }
 
+/* Static Light State (Non-home pages at top — charcoal text, subtle hairline) */
+.luxury-navbar--static-light {
+  background-color: transparent;
+  color: var(--color-charcoal);
+  border-bottom: 1px solid var(--border-light);
+}
+
 /* Scrolled Over Light Section (Translucent Warm Ivory, Charcoal Typography) */
 .luxury-navbar--scrolled-light {
   height: var(--nav-height-condensed);
@@ -61,6 +68,7 @@
   justify-self: start;
   display: flex;
   align-items: center;
+  gap: 1.5rem;
 }
 
 .luxury-navbar__menu-trigger {
@@ -119,6 +127,42 @@
   color: inherit;
   opacity: 0.88;
   transition: opacity var(--duration-micro) var(--ease-luxury);
+}
+
+/* Watch Icon Link (Right Navigation - Icon Only) */
+.luxury-navbar__watch-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(197, 165, 102, 0.35);
+  background-color: rgba(197, 165, 102, 0.06);
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--duration-micro) var(--ease-luxury);
+}
+
+.luxury-navbar__watch-icon-svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  transition: transform var(--duration-micro) var(--ease-luxury), stroke var(--duration-micro);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .luxury-navbar__watch-icon-btn:hover {
+    border-color: var(--color-champagne-gold);
+    background-color: rgba(197, 165, 102, 0.2);
+    color: var(--color-champagne-gold);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 12px rgba(197, 165, 102, 0.25);
+  }
+  .luxury-navbar__watch-icon-btn:hover .luxury-navbar__watch-icon-svg {
+    transform: rotate(-12deg) scale(1.12);
+  }
 }
 
 /* CENTER: Optically Centered NAYAB Wordmark */

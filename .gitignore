@@ -12,7 +12,8 @@ build/
 .env.*
 !.env.example
 
-# Loose source media at repo root (duplicates of public/media and public/images)
+# Loose/raw source media (duplicates of public/media and public/images)
+raw_assets/
 /*.mp4
 /*.png
 /*.jfif

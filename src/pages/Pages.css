@@ -1292,167 +1292,1543 @@
 }
 
 /* ==========================================================================
-   ACCOUNT PAGE (/account)
+   ACCOUNT PAGE — NAYAB CLIENT DESK (/account)
+   12-Column 3-Zone Luxury Client Desk Layout
    ========================================================================== */
 
-.account-header {
+.account-desk-page {
+  padding-top: calc(var(--nav-height, 84px) + 2.5rem);
+  min-height: 100vh;
+  background-color: var(--color-warm-ivory);
+  color: var(--color-charcoal);
+}
+
+.account-page-shell {
+  padding-top: 0.5rem;
+  padding-bottom: clamp(3.5rem, 6vw, 6rem);
+}
+
+/* ── 1. COMPACT CLIENT DESK HEADER ── */
+.account-desk-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: 2.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(220, 214, 203, 0.6);
+  margin-bottom: 2.75rem;
 }
 
-.account-title {
+.account-desk-header__identity {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.account-desk-header__eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--color-champagne-gold);
+  font-weight: 600;
+}
+
+.account-desk-header__name {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 4.2vw, 3.4rem);
+  font-weight: 300;
   color: var(--color-charcoal);
-  margin-top: 0.25rem;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  margin: 0.25rem 0 0.55rem;
 }
 
-.account-email {
-  font-family: var(--font-sans);
-  font-size: 0.875rem;
-  color: var(--color-charcoal-light);
-  margin-top: 0.25rem;
-}
-
-.account-signout-btn {
-  display: inline-flex;
+.account-desk-header__meta {
+  display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
   font-family: var(--font-sans);
-  font-size: 0.775rem;
+  font-size: 0.8125rem;
+  color: var(--color-charcoal-light);
+}
+
+.account-desk-header__sep {
+  color: var(--color-champagne-gold);
+  opacity: 0.8;
+}
+
+.account-desk-header__ref {
+  font-family: 'SF Mono', 'JetBrains Mono', 'Consolas', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  background-color: rgba(18, 19, 20, 0.05);
+  border: 1px solid rgba(18, 19, 20, 0.08);
+  padding: 0.15rem 0.65rem;
+  border-radius: 999px;
+  color: var(--color-charcoal);
+  font-weight: 500;
+}
+
+.account-desk-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.account-desk-admin-pill {
+  padding: 0.4rem 0.95rem;
+  background-color: rgba(197, 165, 102, 0.12);
+  border: 1px solid var(--color-champagne-gold);
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 0.725rem;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--color-oxblood);
-  padding: 0.5rem 1rem;
-  border: 1px solid rgba(90, 34, 39, 0.2);
-  background-color: var(--color-warm-ivory-light);
+  color: var(--color-charcoal);
+  text-decoration: none;
   transition: all var(--duration-micro) var(--ease-luxury);
 }
 
-.account-signout-btn:hover {
-  background-color: var(--color-oxblood);
-  color: #FFFFFF;
+.account-desk-admin-pill:hover {
+  background-color: var(--color-champagne-gold);
+  color: #121314;
+  transform: translateY(-1px);
 }
 
-.account-nav {
-  display: flex;
-  gap: 1rem;
-  border-bottom: 1px solid var(--border-light);
-  margin-bottom: 3rem;
-  overflow-x: auto;
-}
-
-.account-nav__btn {
+.account-desk-catalogue-link {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-charcoal);
+  text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.85rem 1.25rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 4px;
+  border: 1px solid rgba(220, 214, 203, 0.6);
+  background-color: #fff;
+  transition: all var(--duration-micro) var(--ease-luxury);
+}
+
+.account-desk-catalogue-link:hover {
+  border-color: var(--color-champagne-gold);
+  color: var(--color-champagne-gold);
+  transform: translateY(-1px);
+}
+
+/* ── 2. 12-COLUMN 3-ZONE GRID LAYOUT ── */
+.account-desk-grid {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr) 320px;
+  gap: clamp(2rem, 3vw, 3rem);
+  align-items: flex-start;
+}
+
+/* ── ZONE 1: VERTICAL NAVIGATION ── */
+.account-desk-nav-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  position: sticky;
+  top: calc(var(--nav-height, 84px) + 2rem);
+}
+
+.account-desk-nav-header {
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid rgba(220, 214, 203, 0.6);
+}
+
+.account-desk-nav-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-champagne-gold);
+  font-weight: 600;
+  display: block;
+}
+
+.account-desk-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.account-desk-nav__btn {
+  background: none;
+  border: 1px solid transparent;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
   font-family: var(--font-sans);
   font-size: 0.8125rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--color-charcoal-subtle);
-  border-bottom: 2px solid transparent;
+  color: var(--color-charcoal-light);
   cursor: pointer;
-  white-space: nowrap;
   transition: all var(--duration-micro) var(--ease-luxury);
 }
 
-.account-nav__btn--active,
-.account-nav__btn:hover {
-  color: var(--color-charcoal);
-  border-bottom-color: var(--color-champagne-gold);
+.account-desk-nav__index {
+  font-size: 0.6875rem;
+  font-family: 'SF Mono', 'JetBrains Mono', monospace;
+  color: var(--color-champagne-gold);
+  margin-right: 0.75rem;
+  opacity: 0.85;
 }
 
-.account-profile-grid {
+.account-desk-nav__label {
+  flex: 1;
+}
+
+.account-desk-nav__count {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  padding: 0.1rem 0.45rem;
+  background-color: rgba(18, 19, 20, 0.06);
+  border-radius: 999px;
+  color: var(--color-charcoal);
+}
+
+.account-desk-nav__btn:hover:not(.account-desk-nav__btn--active) {
+  color: var(--color-charcoal);
+  background-color: rgba(18, 19, 20, 0.03);
+}
+
+.account-desk-nav__btn--active {
+  color: #f8f6f0;
+  font-weight: 500;
+  background-color: #121314;
+  border-color: #121314;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.account-desk-nav__btn--active .account-desk-nav__index {
+  color: var(--color-champagne-gold);
+  opacity: 1;
+}
+
+.account-desk-nav__btn--active .account-desk-nav__count {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.account-desk-nav-footer {
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(220, 214, 203, 0.6);
+  margin-top: 0.5rem;
+}
+
+.account-desk-signout-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.725rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-charcoal-light);
+  cursor: pointer;
+  transition: color var(--duration-micro);
+  padding: 0.25rem 0.5rem;
+}
+
+.account-desk-signout-btn:hover {
+  color: var(--color-oxblood);
+}
+
+/* ── ZONE 2: MAIN CONTENT COLUMN ── */
+.account-desk-main-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+  min-width: 0;
+}
+
+.account-overview-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* Featured Timepiece Bento Block with 4 Architectural Pillars */
+.account-featured-bento {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #fdfbf7 0%, #f4efe6 100%);
+  border: 1px solid rgba(197, 165, 102, 0.32);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.03);
+}
+
+.account-featured-bento__hero {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  padding: 2.25rem 2.5rem 1.75rem;
+  position: relative;
+}
+
+.account-featured-bento__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  z-index: 1;
+}
+
+.account-featured-bento__tag-wrap {
+  margin-bottom: 0.25rem;
+}
+
+.account-featured-bento__eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-champagne-gold);
+  font-weight: 600;
+}
+
+.account-featured-bento__title {
+  font-family: var(--font-serif);
+  font-size: 1.85rem;
+  font-weight: 300;
+  color: var(--color-charcoal);
+  margin: 0;
+  line-height: 1.15;
+}
+
+.account-featured-bento__subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  color: var(--color-charcoal-light);
+  margin: 0.35rem 0 0.85rem;
+  line-height: 1.5;
+}
+
+.account-featured-bento__price {
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-charcoal);
+  margin-bottom: 1.25rem;
+}
+
+.account-featured-bento__cta-row {
+  display: flex;
+  align-items: center;
+}
+
+.account-featured-bento__media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  position: relative;
+}
+
+.account-featured-bento__halo {
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(197, 165, 102, 0.22) 0%, transparent 70%);
+  filter: blur(24px);
+  pointer-events: none;
+}
+
+.account-featured-bento__img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.12));
+  transition: transform 600ms var(--ease-luxury);
+  position: relative;
+  z-index: 1;
+}
+
+.account-featured-bento:hover .account-featured-bento__img {
+  transform: scale(1.05) translateY(-2px);
+}
+
+/* 4 Pillars Grid (Inspired by Reference Design) */
+.account-featured-bento__pillars {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background-color: rgba(220, 214, 203, 0.6);
+  border-top: 1px solid rgba(220, 214, 203, 0.6);
+}
+
+.account-bento-pillar {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 1.25rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  transition: background-color var(--duration-micro);
+}
+
+.account-bento-pillar:hover {
+  background-color: #fff;
+}
+
+.account-bento-pillar__num {
+  font-family: 'SF Mono', 'JetBrains Mono', monospace;
+  font-size: 0.6875rem;
+  color: var(--color-champagne-gold);
+  font-weight: 600;
+}
+
+.account-bento-pillar__title {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-charcoal);
+  margin: 0;
+  line-height: 1.25;
+}
+
+.account-bento-pillar__desc {
+  font-family: var(--font-sans);
+  font-size: 0.725rem;
+  color: var(--color-charcoal-light);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Overview Section Ledgers */
+.account-overview-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.account-overview-section__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(220, 214, 203, 0.6);
+  padding-bottom: 0.75rem;
+}
+
+.account-overview-section__title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: var(--color-charcoal);
+  margin: 0;
+  display: inline-block;
+}
+
+.account-overview-section__desc {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--color-charcoal-light);
+  margin-left: 0.75rem;
+}
+
+.account-overview-section__link {
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.725rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-charcoal-light);
+  cursor: pointer;
+  transition: color var(--duration-micro);
+}
+
+.account-overview-section__link:hover {
+  color: var(--color-champagne-gold);
+}
+
+.account-overview-card-empty {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.5rem 1.75rem;
+  background-color: #fff;
+  border: 1px solid rgba(220, 214, 203, 0.6);
+  border-radius: 4px;
+}
+
+.account-overview-card-empty__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.account-overview-card-empty__title {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--color-charcoal);
+}
+
+.account-overview-card-empty__text {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  color: var(--color-charcoal-light);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.account-overview-empty-strip {
+  padding: 1rem 0;
+  font-family: var(--font-sans);
+  font-size: 0.825rem;
+  color: var(--color-charcoal-light);
+}
+
+/* Ledger Row */
+.account-ledger-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  background-color: #fff;
+  border: 1px solid rgba(220, 214, 203, 0.6);
+  border-radius: 4px;
+  margin-bottom: 0.65rem;
+  font-family: var(--font-sans);
+  font-size: 0.825rem;
+  transition: border-color var(--duration-micro);
+}
+
+.account-ledger-row:hover {
+  border-color: var(--color-champagne-gold);
+}
+
+.account-ledger-row__left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.account-ledger-row__ref {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-charcoal);
+}
+
+.account-ledger-row__detail {
+  font-size: 0.75rem;
+  color: var(--color-charcoal-light);
+}
+
+.account-ledger-row__right {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.account-ledger-row__total {
+  font-weight: 600;
+  color: var(--color-charcoal);
+}
+
+.account-ledger-row__link {
+  font-size: 0.725rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-charcoal);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.account-ledger-row__link:hover {
+  color: var(--color-champagne-gold);
+}
+
+/* Status Badge */
+.account-status-badge {
+  padding: 0.15rem 0.5rem;
+  background-color: rgba(197, 165, 102, 0.15);
+  color: #7d6328;
+  border-radius: 2px;
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Wishlist Mini Cards on Overview */
+.account-overview-wishlist-strip {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
+  gap: 1.25rem;
 }
 
-.account-card {
-  padding: 2.25rem;
-  background-color: var(--color-warm-ivory-light);
-  border: 1px solid var(--border-light);
+.account-wishlist-mini-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background-color: #fff;
+  border: 1px solid rgba(220, 214, 203, 0.6);
+  border-radius: 4px;
+  transition: all var(--duration-micro) var(--ease-luxury);
+}
+
+.account-wishlist-mini-card:hover {
+  border-color: var(--color-champagne-gold);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+}
+
+.account-wishlist-mini-card__img-wrap {
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f6f3ee;
+  border-radius: 2px;
+  padding: 4px;
+  flex-shrink: 0;
+}
+
+.account-wishlist-mini-card__img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.account-wishlist-mini-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.account-wishlist-mini-card__ref {
+  font-size: 0.65rem;
+  color: var(--color-champagne-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.account-wishlist-mini-card__name {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.account-wishlist-mini-card__price {
+  font-size: 0.775rem;
+  font-weight: 600;
+  color: var(--color-charcoal);
+}
+
+.account-wishlist-mini-card__cta {
+  font-size: 0.725rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-charcoal);
+  text-decoration: none;
+  font-weight: 500;
+  flex-shrink: 0;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid rgba(220, 214, 203, 0.6);
+  border-radius: 2px;
+  transition: all var(--duration-micro);
+}
+
+.account-wishlist-mini-card__cta:hover {
+  border-color: var(--color-champagne-gold);
+  color: var(--color-champagne-gold);
+}
+
+/* ── TAB PANES (ACQUISITIONS, WISHLIST, ADDRESSES, PROFILE) ── */
+.account-pane {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  animation: accountFadeIn 300ms var(--ease-mechanical) both;
+}
+
+.account-pane__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(220, 214, 203, 0.6);
+  padding-bottom: 0.85rem;
+}
+
+.account-pane__title {
+  font-family: var(--font-serif);
+  font-size: 1.65rem;
+  font-weight: 300;
+  color: var(--color-charcoal);
+  margin: 0;
+}
+
+.account-pane__desc {
+  font-family: var(--font-sans);
+  font-size: 0.775rem;
+  color: var(--color-charcoal-light);
+  display: block;
+  margin-top: 0.2rem;
+}
+
+.account-pane__count {
+  font-family: var(--font-sans);
+  font-size: 0.775rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-charcoal-light);
+}
+
+/* Acquisitions Table */
+.account-orders-table {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid rgba(220, 214, 203, 0.6);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.account-orders-table__head {
+  display: grid;
+  grid-template-columns: 140px 110px 1fr 120px 120px 80px;
+  align-items: center;
+  padding: 0.85rem 1.25rem;
+  background-color: #fbf9f5;
+  border-bottom: 1px solid rgba(220, 214, 203, 0.6);
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-charcoal-light);
+  font-weight: 600;
+}
+
+.account-orders-table__row {
+  display: grid;
+  grid-template-columns: 140px 110px 1fr 120px 120px 80px;
+  align-items: center;
+  padding: 1.1rem 1.25rem;
+  border-bottom: 1px solid rgba(220, 214, 203, 0.4);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  color: var(--color-charcoal);
+  transition: background-color var(--duration-micro);
+}
+
+.account-orders-table__row:last-child {
+  border-bottom: none;
+}
+
+.account-orders-table__row:hover {
+  background-color: #faf8f5;
+}
+
+.account-orders-table__ref {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.account-orders-table__items {
+  color: var(--color-charcoal);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 1rem;
+}
+
+.account-orders-table__total {
+  font-weight: 600;
+}
+
+.account-orders-table__link {
+  color: var(--color-charcoal);
+  text-decoration: none;
+  font-size: 0.725rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+.account-orders-table__link:hover {
+  color: var(--color-champagne-gold);
+}
+
+/* Wishlist Product Grid */
+.account-wishlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.account-wishlist-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid rgba(220, 214, 203, 0.6);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all var(--duration-ui) var(--ease-luxury);
+}
+
+.account-wishlist-card:hover {
+  border-color: var(--color-champagne-gold);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+.account-wishlist-card__img-frame {
+  width: 100%;
+  aspect-ratio: 1;
+  background-color: #f6f3ee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.75rem;
+}
+
+.account-wishlist-card__img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 500ms var(--ease-luxury);
+}
+
+.account-wishlist-card:hover .account-wishlist-card__img {
+  transform: scale(1.05);
+}
+
+.account-wishlist-card__body {
+  display: flex;
+  flex-direction: column;
+  padding: 1.35rem;
+  gap: 0.35rem;
+}
+
+.account-wishlist-card__ref {
+  font-size: 0.65rem;
+  color: var(--color-champagne-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.account-wishlist-card__title {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+.account-wishlist-card__title a {
+  color: var(--color-charcoal);
+  text-decoration: none;
+}
+
+.account-wishlist-card__specs {
+  font-size: 0.775rem;
+  color: var(--color-charcoal-light);
+  margin: 0;
+}
+
+.account-wishlist-card__price {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-charcoal);
+  margin: 0.35rem 0 0.85rem;
+}
+
+.account-wishlist-card__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(220, 214, 203, 0.4);
+}
+
+.account-wishlist-card__bag-btn {
+  flex: 1;
+  height: 36px;
+  background-color: #121314;
+  color: #fff;
+  border: none;
+  border-radius: 2px;
+  font-family: var(--font-sans);
+  font-size: 0.725rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: background-color var(--duration-micro);
+}
+
+.account-wishlist-card__bag-btn:hover {
+  background-color: #25282a;
+}
+
+.account-wishlist-card__remove-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid rgba(220, 214, 203, 0.6);
+  border-radius: 2px;
+  color: var(--color-charcoal-light);
+  cursor: pointer;
+  transition: all var(--duration-micro);
+}
+
+.account-wishlist-card__remove-btn:hover {
+  color: var(--color-oxblood);
+  border-color: var(--color-oxblood);
+}
+
+/* Addresses Grid */
+.account-add-addr-btn,
+.account-edit-profile-btn {
+  background: #fff;
+  border: 1px solid rgba(220, 214, 203, 0.6);
+  border-radius: 2px;
+  padding: 0.4rem 0.85rem;
+  font-family: var(--font-sans);
+  font-size: 0.725rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-charcoal);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all var(--duration-micro);
+}
+
+.account-add-addr-btn:hover,
+.account-edit-profile-btn:hover {
+  border-color: var(--color-champagne-gold);
+  color: var(--color-champagne-gold);
+}
+
+.account-address-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.account-address-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  background-color: #fff;
+  border: 1px solid rgba(220, 214, 203, 0.6);
+  border-radius: 4px;
+}
+
+.account-address-card--default {
+  border-color: var(--color-champagne-gold);
+  background-color: #faf8f5;
+}
+
+.account-address-card__badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  background-color: rgba(197, 165, 102, 0.2);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 2px;
+  width: fit-content;
+}
+
+.account-address-card__name {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+.account-address-card__lines {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  color: var(--color-charcoal-light);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.account-address-card__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(220, 214, 203, 0.4);
+}
+
+.account-address-card__set-default {
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.725rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-charcoal);
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.account-address-card__delete {
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.725rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-oxblood);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0;
+}
+
+/* Forms */
+.account-address-form,
+.account-profile-edit-form {
+  padding: 1.75rem;
+  background-color: #fff;
+  border: 1px solid rgba(220, 214, 203, 0.6);
+  border-radius: 4px;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
 }
 
-.account-card__title {
+.account-address-form__title {
   font-family: var(--font-serif);
-  font-size: 1.5rem;
-  font-weight: 300;
+  font-size: 1.35rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+.account-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.account-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.account-form-field--full {
+  grid-column: 1 / -1;
+}
+
+.account-form-field--checkbox {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  align-items: center;
+}
+
+.account-form-field label {
+  font-family: var(--font-sans);
+  font-size: 0.725rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   color: var(--color-charcoal);
 }
 
-.account-card__fields {
+.account-form-field input[type="text"],
+.account-form-field input[type="tel"],
+.account-form-field select {
+  height: 42px;
+  padding: 0 0.85rem;
+  border: 1px solid rgba(220, 214, 203, 0.8);
+  border-radius: 2px;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  background-color: #fbf9f5;
+  color: var(--color-charcoal);
+}
+
+.account-form-field input:focus,
+.account-form-field select:focus {
+  outline: none;
+  border-color: var(--color-champagne-gold);
+  background-color: #fff;
+}
+
+.account-form-err {
+  font-size: 0.725rem;
+  color: var(--color-oxblood);
+}
+
+.account-address-form__actions {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
   gap: 1rem;
+  margin-top: 0.5rem;
 }
 
-.account-field {
+.account-btn-cancel {
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-charcoal-light);
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+}
+
+/* Profile Table */
+.account-profile-table {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  max-width: 680px;
+  background-color: #fff;
+  border: 1px solid rgba(220, 214, 203, 0.6);
+  border-radius: 4px;
 }
 
-.account-field__label {
+.account-profile-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  padding: 1.1rem 1.35rem;
+  border-bottom: 1px solid rgba(220, 214, 203, 0.4);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+}
+
+.account-profile-row:last-child {
+  border-bottom: none;
+}
+
+.account-profile-label {
+  font-size: 0.725rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-charcoal-light);
+}
+
+.account-profile-val {
+  color: var(--color-charcoal);
+}
+
+.account-profile-val--mono {
+  font-family: 'SF Mono', 'JetBrains Mono', 'Consolas', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+}
+
+/* ── ZONE 3: RIGHT SUMMARY COLUMN (~25–30%) ── */
+.account-desk-summary-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  background-color: #fff;
+  border: 1px solid rgba(220, 214, 203, 0.7);
+  border-radius: 6px;
+  padding: 1.75rem;
+  position: sticky;
+  top: calc(var(--nav-height, 84px) + 2rem);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+}
+
+.account-summary-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.account-summary-block__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.account-summary-block__eyebrow {
   font-family: var(--font-sans);
   font-size: 0.6875rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--color-charcoal-subtle);
+  letter-spacing: 0.16em;
+  color: var(--color-champagne-gold);
+  font-weight: 600;
 }
 
-.account-field__val {
-  font-family: var(--font-sans);
-  font-size: 0.95rem;
-  color: var(--color-charcoal);
-  font-weight: 500;
+.account-summary-block__badge {
+  padding: 0.1rem 0.5rem;
+  background-color: rgba(197, 165, 102, 0.15);
+  color: #7d6328;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 600;
 }
 
-.account-card__badge-row {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-sans);
-  font-size: 0.775rem;
-  color: var(--color-charcoal);
-  padding: 0.75rem 1rem;
-  background-color: var(--color-warm-ivory);
-  border: 1px solid var(--border-light);
-  margin-top: auto;
+.account-summary-divider {
+  height: 1px;
+  background-color: rgba(220, 214, 203, 0.45);
+  margin: 0.25rem 0;
 }
 
-.account-unauth-card {
-  max-width: 680px;
-  margin: 4rem auto;
-  padding: 3.5rem;
-  background-color: var(--color-warm-ivory-light);
-  border: 1px solid var(--border-light-emphasis);
-  text-align: center;
+/* Bag Mini Panel */
+.account-summary-bag {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 0.85rem;
+  margin-top: 0.35rem;
 }
 
-.account-unauth-actions {
+.account-summary-bag__items {
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-@media (max-width: 800px) {
-  .account-profile-grid {
+.account-summary-bag-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid rgba(220, 214, 203, 0.3);
+}
+
+.account-summary-bag-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.account-summary-bag-item__img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  background-color: #f6f3ee;
+  border-radius: 2px;
+  padding: 2px;
+  flex-shrink: 0;
+}
+
+.account-summary-bag-item__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.account-summary-bag-item__title {
+  font-family: var(--font-serif);
+  font-size: 0.9rem;
+  color: var(--color-charcoal);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.account-summary-bag-item__meta {
+  font-family: var(--font-sans);
+  font-size: 0.725rem;
+  color: var(--color-charcoal-light);
+}
+
+.account-summary-bag__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-top: 0.35rem;
+}
+
+.account-summary-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all var(--duration-micro);
+}
+
+.account-summary-btn--outline {
+  background: none;
+  border: 1px solid rgba(220, 214, 203, 0.8);
+  color: var(--color-charcoal);
+}
+
+.account-summary-btn--outline:hover {
+  border-color: var(--color-champagne-gold);
+  color: var(--color-champagne-gold);
+}
+
+.account-summary-btn--solid {
+  background-color: #121314;
+  color: #fff;
+  border: 1px solid #121314;
+}
+
+.account-summary-btn--solid:hover {
+  background-color: #25282a;
+}
+
+.account-summary-empty p {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  color: var(--color-charcoal-light);
+  margin: 0.25rem 0 0.5rem;
+}
+
+.account-summary-stat {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--color-charcoal);
+  margin: 0.2rem 0;
+}
+
+.account-summary-stat strong {
+  font-size: 1.05rem;
+  color: var(--color-charcoal);
+}
+
+.account-summary-text {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  color: var(--color-charcoal);
+  margin: 0.2rem 0;
+}
+
+.account-summary-desc {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--color-charcoal-light);
+  line-height: 1.5;
+  margin: 0.2rem 0;
+}
+
+.account-summary-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--font-sans);
+  font-size: 0.725rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-charcoal);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 0.2rem;
+  transition: color var(--duration-micro);
+}
+
+.account-summary-link:hover {
+  color: var(--color-champagne-gold);
+}
+
+/* Alerts */
+.account-alert {
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  font-size: 0.825rem;
+}
+
+.account-alert--success {
+  background-color: rgba(46, 125, 50, 0.1);
+  color: #1b5e20;
+  border: 1px solid rgba(46, 125, 50, 0.3);
+}
+
+/* Skeletons */
+.account-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.account-skeleton__bar {
+  height: 14px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #edeae3 25%, #f5f2eb 50%, #edeae3 75%);
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.5s ease infinite;
+}
+
+.account-skeleton__bar--wide { width: 60%; height: 20px; }
+.account-skeleton__bar--medium { width: 40%; }
+.account-skeleton__bar--narrow { width: 25%; }
+
+@keyframes skeletonShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes accountFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── RESPONSIVE BREAKPOINTS ── */
+@media (max-width: 1080px) {
+  .account-desk-grid {
+    grid-template-columns: 200px 1fr;
+  }
+
+  .account-desk-summary-col {
+    display: none;
+  }
+}
+
+@media (max-width: 860px) {
+  .account-desk-page {
+    padding-top: calc(var(--nav-height, 84px) + 1.5rem);
+  }
+
+  .account-desk-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .account-desk-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .account-desk-nav-col {
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid rgba(220, 214, 203, 0.6);
+    padding-bottom: 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .account-desk-nav-header {
+    display: none;
+  }
+
+  .account-desk-nav {
+    flex-direction: row;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    flex: 1;
+    gap: 0.5rem;
+  }
+
+  .account-desk-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .account-desk-nav__btn {
+    border: 1px solid rgba(220, 214, 203, 0.6);
+    padding: 0.5rem 0.85rem;
+    white-space: nowrap;
+    font-size: 0.75rem;
+  }
+
+  .account-desk-nav__btn--active {
+    background-color: #121314;
+    color: #fff;
+    border-color: #121314;
+  }
+
+  .account-desk-nav-footer {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+    flex-shrink: 0;
+  }
+
+  .account-featured-bento__hero {
+    grid-template-columns: 1fr;
+    padding: 1.75rem;
+  }
+
+  .account-featured-bento__media {
+    order: -1;
+    height: 160px;
+  }
+
+  .account-featured-bento__pillars {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .account-orders-table__head {
+    display: none;
+  }
+
+  .account-orders-table__row {
+    grid-template-columns: 1fr auto;
+    gap: 0.5rem;
+  }
+
+  .account-orders-table__items {
+    grid-column: 1 / -1;
+  }
+
+  .account-overview-wishlist-strip {
     grid-template-columns: 1fr;
   }
 
-  .account-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.5rem;
+  .account-profile-row {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
   }
 }
+
+@media (max-width: 480px) {
+  .account-featured-bento__pillars {
+    grid-template-columns: 1fr;
+  }
+
+  .account-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .account-wishlist-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+

@@ -8,6 +8,7 @@ import { LuxuryFooter } from './components/layout/LuxuryFooter';
 import { HomePage } from './pages/HomePage';
 import { CollectionsPage } from './pages/CollectionsPage';
 import { CollectionDetailPage } from './pages/CollectionDetailPage';
+import { WatchesPage } from './pages/WatchesPage';
 import { ProductDetailPage } from './pages/ProductDetailPage';
 import { WishlistPage } from './pages/WishlistPage';
 import { CartPage } from './pages/CartPage';
@@ -43,6 +44,7 @@ export const App: React.FC = () => {
               <Route path="/" element={<HomePage />} />
               <Route path="/collections" element={<CollectionsPage />} />
               <Route path="/collections/:slug" element={<CollectionDetailPage />} />
+              <Route path="/watches" element={<WatchesPage />} />
               <Route path="/watches/:slug" element={<ProductDetailPage />} />
               <Route path="/wishlist" element={<WishlistPage />} />
               <Route path="/cart" element={<CartPage />} />
