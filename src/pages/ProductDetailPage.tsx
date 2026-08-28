@@ -456,7 +456,7 @@ export const ProductDetailPage: React.FC = () => {
                 <Grid size={15} style={{ marginRight: '0.4rem' }} /> Explore All Timepieces
               </EditorialButton>
               <EditorialButton to={`/collections/${product.collection.slug}`} variant="primary" size="md">
-                View {product.collection.name} Collection <ArrowRight size={15} style={{ marginLeft: '0.4rem' }} />
+                View {product.collection.name} Collection
               </EditorialButton>
             </div>
           </div>

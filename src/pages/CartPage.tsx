@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
-import { Plus, Minus, Trash2, ShieldCheck, Truck, Lock, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Plus, Minus, Trash2, ShieldCheck, Truck, Lock, ArrowLeft } from 'lucide-react';
 import { EditorialButton } from '../components/common/EditorialButton';
 import { SeoHead } from '../components/common/SeoHead';
 import './Pages.css';
@@ -204,7 +204,7 @@ export const CartPage: React.FC = () => {
                     size="lg"
                     className="cart-summary-btn"
                   >
-                    Proceed with Acquisition <ArrowRight size={16} />
+                    Proceed with Acquisition
                   </EditorialButton>
                   <p className="cart-summary-security-note">
                     <Lock size={12} /> Secure encrypted acquisition protocol

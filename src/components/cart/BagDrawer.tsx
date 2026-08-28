@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { X, Plus, Minus, Trash2, ArrowRight, ShieldCheck } from 'lucide-react';
+import { X, Plus, Minus, Trash2, ShieldCheck } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { EditorialButton } from '../common/EditorialButton';
 import './BagDrawer.css';
@@ -195,7 +195,7 @@ export const BagDrawer: React.FC = () => {
                 onClick={closeBag}
                 className="bag-drawer__cta-btn"
               >
-                Proceed to Acquisition Bag <ArrowRight size={16} />
+                Proceed to Acquisition Bag
               </EditorialButton>
             </div>
           </footer>
