@@ -10,6 +10,7 @@ import { messageFor } from '../api/client';
 import {
   Plus,
   Trash2,
+  ArrowRight,
 } from 'lucide-react';
 import { EditorialButton } from '../components/common/EditorialButton';
 import { SeoHead } from '../components/common/SeoHead';
@@ -240,7 +241,7 @@ export const AccountPage: React.FC = () => {
               </Link>
             )}
             <Link to="/watches" className="account-desk-catalogue-link">
-              All Timepieces →
+              All Timepieces <ArrowRight size={13} style={{ marginLeft: '0.35rem', verticalAlign: 'middle' }} />
             </Link>
           </div>
         </header>
@@ -311,7 +312,7 @@ export const AccountPage: React.FC = () => {
                 }}
                 className="account-desk-signout-btn"
               >
-                Sign Out →
+                Sign Out <ArrowRight size={13} style={{ marginLeft: '0.35rem', verticalAlign: 'middle' }} />
               </button>
             </div>
           </aside>
@@ -403,7 +404,7 @@ export const AccountPage: React.FC = () => {
                       onClick={() => setActiveTab('acquisitions')}
                       className="account-overview-section__link"
                     >
-                      View All ({orders.length}) →
+                      View All ({orders.length}) <ArrowRight size={13} style={{ marginLeft: '0.35rem', verticalAlign: 'middle' }} />
                     </button>
                   </div>
 
@@ -437,7 +438,7 @@ export const AccountPage: React.FC = () => {
                             </span>
                             <span className="account-ledger-row__total">{order.formattedTotal}</span>
                             <Link to={`/orders/${order.id}`} className="account-ledger-row__link">
-                              View →
+                              View <ArrowRight size={13} style={{ marginLeft: '0.35rem', verticalAlign: 'middle' }} />
                             </Link>
                           </div>
                         </div>
@@ -458,7 +459,7 @@ export const AccountPage: React.FC = () => {
                       onClick={() => setActiveTab('wishlist')}
                       className="account-overview-section__link"
                     >
-                      View Wishlist ({wishlistItems.length}) →
+                      View Wishlist ({wishlistItems.length}) <ArrowRight size={13} style={{ marginLeft: '0.35rem', verticalAlign: 'middle' }} />
                     </button>
                   </div>
 
@@ -503,7 +504,7 @@ export const AccountPage: React.FC = () => {
                             to={`/watches/${item.product?.slug}`}
                             className="account-wishlist-mini-card__cta"
                           >
-                            View →
+                            View <ArrowRight size={13} style={{ marginLeft: '0.35rem', verticalAlign: 'middle' }} />
                           </Link>
                         </div>
                       ))}
@@ -564,7 +565,7 @@ export const AccountPage: React.FC = () => {
                         <span className="account-orders-table__total">{order.formattedTotal}</span>
                         <span>
                           <Link to={`/orders/${order.id}`} className="account-orders-table__link">
-                            Details →
+                            Details <ArrowRight size={13} style={{ marginLeft: '0.35rem', verticalAlign: 'middle' }} />
                           </Link>
                         </span>
                       </div>
@@ -874,7 +875,7 @@ export const AccountPage: React.FC = () => {
                       onClick={() => setIsEditingProfile(true)}
                       className="account-edit-profile-btn"
                     >
-                      Edit Profile →
+                      Edit Profile <ArrowRight size={13} style={{ marginLeft: '0.35rem', verticalAlign: 'middle' }} />
                     </button>
                   )}
                 </div>
@@ -990,10 +991,10 @@ export const AccountPage: React.FC = () => {
                   </div>
                   <div className="account-summary-bag__actions">
                     <Link to="/cart" className="account-summary-btn account-summary-btn--outline">
-                      View Bag →
+                      View Bag <ArrowRight size={13} style={{ marginLeft: '0.35rem', verticalAlign: 'middle' }} />
                     </Link>
                     <Link to="/checkout" className="account-summary-btn account-summary-btn--solid">
-                      Checkout →
+                      Checkout <ArrowRight size={13} style={{ marginLeft: '0.35rem', verticalAlign: 'middle' }} />
                     </Link>
                   </div>
                 </div>
@@ -1001,7 +1002,7 @@ export const AccountPage: React.FC = () => {
                 <div className="account-summary-empty">
                   <p>0 pieces currently in bag.</p>
                   <Link to="/watches" className="account-summary-link">
-                    Explore Catalogue →
+                    Explore Catalogue <ArrowRight size={13} style={{ marginLeft: '0.35rem', verticalAlign: 'middle' }} />
                   </Link>
                 </div>
               )}
@@ -1020,7 +1021,7 @@ export const AccountPage: React.FC = () => {
                 onClick={() => setActiveTab('wishlist')}
                 className="account-summary-link"
               >
-                View Wishlist →
+                View Wishlist <ArrowRight size={13} style={{ marginLeft: '0.35rem', verticalAlign: 'middle' }} />
               </button>
             </div>
 
@@ -1043,7 +1044,7 @@ export const AccountPage: React.FC = () => {
                 onClick={() => setActiveTab('addresses')}
                 className="account-summary-link"
               >
-                Manage Addresses →
+                Manage Addresses <ArrowRight size={13} style={{ marginLeft: '0.35rem', verticalAlign: 'middle' }} />
               </button>
             </div>
 
@@ -1056,7 +1057,7 @@ export const AccountPage: React.FC = () => {
                 Dedicated client concierge for bespoke allocations, viewing appointments, and insured transit.
               </p>
               <a href="mailto:concierge@nayab.pk" className="account-summary-link">
-                Contact Concierge →
+                Contact Concierge <ArrowRight size={13} style={{ marginLeft: '0.35rem', verticalAlign: 'middle' }} />
               </a>
             </div>
           </aside>
