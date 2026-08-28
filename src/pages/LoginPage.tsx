@@ -3,6 +3,7 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Lock, AlertCircle, Eye, EyeOff, ShieldCheck } from 'lucide-react';
 import { EditorialButton } from '../components/common/EditorialButton';
+import { SeoHead } from '../components/common/SeoHead';
 import './AuthPages.css';
 
 export const LoginPage: React.FC = () => {
@@ -41,6 +42,11 @@ export const LoginPage: React.FC = () => {
 
   return (
     <main className="auth-page theme-ivory">
+      <SeoHead
+        title="Client Sign In | Private Access"
+        description="Sign in to your private NAYAB client portal to manage timepiece allocations and certificates of provenance."
+        canonicalPath="/login"
+      />
       <div className="auth-split">
         {/* Left: Campaign Atelier Art */}
         <div className="auth-split__media">

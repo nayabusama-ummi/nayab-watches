@@ -111,41 +111,51 @@
 
 .collection-card__tagline {
   font-family: var(--font-sans);
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: var(--color-champagne-gold);
+  color: var(--color-champagne-gold-light);
 }
 
 .collection-card__title {
   color: #FFFFFF;
   line-height: 1.1;
-  font-size: clamp(1.6rem, 2.8vw, 2.25rem);
+  font-size: clamp(1.75rem, 2.8vw, 2.35rem);
 }
 
 .collection-card__desc {
   font-family: var(--font-sans);
-  font-size: 0.8125rem;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.75);
-  line-height: 1.5;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.6;
 }
 
 .collection-card__action {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.5rem;
   font-family: var(--font-sans);
-  font-size: 0.725rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--color-warm-ivory);
-  margin-top: 0.5rem;
-  opacity: 0.85;
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 0.5rem 1.15rem;
+  border-radius: 2px;
+  margin-top: 0.75rem;
+  width: fit-content;
+  transition: all var(--duration-ui) var(--ease-luxury);
 }
 
 .collection-card__arrow {
-  transition: transform var(--duration-ui) var(--ease-luxury);
+  color: var(--color-champagne-gold-light);
+  transition: transform var(--duration-ui) var(--ease-luxury), color var(--duration-ui);
 }
 
 /* Hover States (Emil Kowalski) */
@@ -156,11 +166,14 @@
 
   .collection-card:hover .collection-card__arrow {
     transform: translateX(4px);
+    color: #000000;
   }
 
   .collection-card:hover .collection-card__action {
-    color: var(--color-champagne-gold);
-    opacity: 1;
+    background: var(--color-champagne-gold);
+    color: #000000;
+    border-color: var(--color-champagne-gold);
+    box-shadow: 0 4px 16px rgba(197, 165, 102, 0.35);
   }
 }
 

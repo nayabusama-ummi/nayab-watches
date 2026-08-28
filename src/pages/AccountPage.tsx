@@ -12,6 +12,7 @@ import {
   Trash2,
 } from 'lucide-react';
 import { EditorialButton } from '../components/common/EditorialButton';
+import { SeoHead } from '../components/common/SeoHead';
 import './Pages.css';
 import './Commerce.css';
 
@@ -214,6 +215,11 @@ export const AccountPage: React.FC = () => {
 
   return (
     <main className="page-container theme-ivory account-desk-page">
+      <SeoHead
+        title="Client Portal & Ledger | NAYAB Fine Watchmaking"
+        description="Private client portal for managing allocations, order provenance, addresses, and curated wishlist."
+        canonicalPath="/account"
+      />
       <div className="container account-page-shell">
         {/* ── 1. COMPACT CLIENT DESK HEADER ── */}
         <header className="account-desk-header">

@@ -53,7 +53,7 @@ export const NewModelsSection: React.FC = () => {
                 <p className="body-standard new-models__desc">{sovereign.description}</p>
                 <div className="new-models__card-footer">
                   <span className="new-models__price">{sovereign.formattedPrice}</span>
-                  <EditorialButton to={`/watches/${sovereign.slug}`} variant="secondary" size="md">
+                  <EditorialButton to={`/watches/${sovereign.slug}`} variant="primary" size="md">
                     Discover Timepiece
                   </EditorialButton>
                 </div>
@@ -88,7 +88,7 @@ export const NewModelsSection: React.FC = () => {
                 <p className="body-standard new-models__desc">{meridian.description}</p>
                 <div className="new-models__card-footer">
                   <span className="new-models__price">{meridian.formattedPrice}</span>
-                  <EditorialButton to={`/watches/${meridian.slug}`} variant="secondary" size="md">
+                  <EditorialButton to={`/watches/${meridian.slug}`} variant="primary" size="md">
                     Discover Timepiece
                   </EditorialButton>
                 </div>

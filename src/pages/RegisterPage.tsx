@@ -3,6 +3,7 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Lock, AlertCircle, Eye, EyeOff, ShieldCheck } from 'lucide-react';
 import { EditorialButton } from '../components/common/EditorialButton';
+import { SeoHead } from '../components/common/SeoHead';
 import './AuthPages.css';
 
 export const RegisterPage: React.FC = () => {
@@ -60,6 +61,11 @@ export const RegisterPage: React.FC = () => {
 
   return (
     <main className="auth-page theme-ivory">
+      <SeoHead
+        title="Register Client Account | NAYAB Atelier"
+        description="Create your private NAYAB client ledger account to manage your timepiece collection and certificates of provenance."
+        canonicalPath="/register"
+      />
       <div className="auth-split">
         {/* Left: Campaign Art */}
         <div className="auth-split__media">

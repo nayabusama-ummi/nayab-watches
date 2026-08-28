@@ -1,0 +1,8 @@
+# NAYAB Fine Watchmaking Robots.txt
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api/
+
+# Sitemaps
+Sitemap: https://nayabwatches.com/sitemap.xml

@@ -410,7 +410,7 @@
   display: flex;
   flex-direction: column;
   padding-top: 1.25rem;
-  gap: 0.35rem;
+  gap: 0.45rem;
 }
 
 .watches-card__header-meta {
@@ -418,26 +418,27 @@
   align-items: center;
   justify-content: space-between;
   font-family: var(--font-sans);
-  font-size: 0.7rem;
+  font-size: 0.8125rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
+  font-weight: 600;
 }
 
 .watches-card__ref {
-  color: var(--color-champagne-gold);
-  font-weight: 500;
+  color: var(--color-champagne-gold-dark);
+  font-weight: 600;
 }
 
 .watches-card__collection {
-  color: var(--color-charcoal-light);
+  color: var(--color-charcoal-subtle);
 }
 
 .watches-card__title {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 400;
-  line-height: 1.3;
-  margin: 0.15rem 0;
+  line-height: 1.25;
+  margin: 0.2rem 0;
 }
 
 .watches-card__title a {
@@ -447,52 +448,69 @@
 }
 
 .watches-card__title a:hover {
-  color: var(--color-champagne-gold);
+  color: var(--color-champagne-gold-dark);
 }
 
 .watches-card__specs {
   font-family: var(--font-sans);
-  font-size: 0.8rem;
-  color: var(--color-charcoal-light);
+  font-size: 0.875rem;
+  color: var(--color-charcoal-subtle);
+  line-height: 1.4;
 }
 
 .watches-card__footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 0.65rem;
-  padding-top: 0.65rem;
-  border-top: 1px solid rgba(220, 214, 203, 0.4);
+  margin-top: 0.85rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border-light-emphasis);
+  gap: 0.75rem;
 }
 
 .watches-card__price {
   font-family: var(--font-sans);
-  font-size: 0.95rem;
+  font-size: 1.125rem;
   font-weight: 600;
   color: var(--color-charcoal);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
+  font-variant-numeric: tabular-nums;
 }
 
 .watches-card__cta {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.45rem;
   font-family: var(--font-sans);
-  font-size: 0.725rem;
-  font-weight: 500;
+  font-size: 0.775rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   color: var(--color-charcoal);
+  background-color: rgba(18, 18, 18, 0.05);
+  border: 1.5px solid var(--border-light-emphasis);
+  padding: 0.5rem 1rem;
+  border-radius: 2px;
+  min-height: 38px;
   text-decoration: none;
-  transition: color var(--duration-ui);
+  transition: all var(--duration-ui) var(--ease-luxury);
+}
+
+.watches-card:hover .watches-card__cta {
+  background-color: var(--color-charcoal);
+  color: #FFFFFF;
+  border-color: var(--color-charcoal);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
 }
 
 .watches-card__arrow {
-  color: var(--color-champagne-gold);
-  transition: transform var(--duration-ui) var(--ease-luxury);
+  color: var(--color-champagne-gold-dark);
+  transition: transform var(--duration-ui) var(--ease-luxury), color var(--duration-ui);
 }
 
 .watches-card:hover .watches-card__arrow {
+  color: var(--color-champagne-gold-light);
   transform: translateX(4px);
 }
 

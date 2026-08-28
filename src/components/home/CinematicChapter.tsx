@@ -60,7 +60,7 @@ export const CinematicChapter: React.FC<CinematicChapterProps> = ({
           <div className="cinematic-chapter__cta">
             {chapter.ctaTarget.startsWith('#') ? (
               <EditorialButton
-                variant="outline"
+                variant={chapter.id === 2 ? 'gold' : 'primary'}
                 size="md"
                 onClick={() => {
                   const el = document.querySelector(chapter.ctaTarget);
@@ -72,7 +72,7 @@ export const CinematicChapter: React.FC<CinematicChapterProps> = ({
             ) : (
               <EditorialButton
                 to={chapter.ctaTarget}
-                variant="outline"
+                variant={chapter.id === 2 ? 'gold' : 'primary'}
                 size="md"
               >
                 {chapter.ctaText}

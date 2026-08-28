@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { Plus, Minus, Trash2, ShieldCheck, Truck, Lock, ArrowRight, ArrowLeft } from 'lucide-react';
 import { EditorialButton } from '../components/common/EditorialButton';
+import { SeoHead } from '../components/common/SeoHead';
 import './Pages.css';
 
 export const CartPage: React.FC = () => {
@@ -16,6 +17,11 @@ export const CartPage: React.FC = () => {
 
   return (
     <main className="page-container theme-ivory">
+      <SeoHead
+        title="Acquisition Bag | Private Order Review"
+        description="Review your reserved NAYAB mechanical timepieces before proceeding to checkout and armored delivery."
+        canonicalPath="/cart"
+      />
       <div className="container section-padding">
         {/* Header */}
         <header className="page-header">

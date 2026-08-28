@@ -1,44 +1,49 @@
 :root {
-  /* Brand Palette — Restrained Luxury */
+  /* Brand Palette — Restrained Luxury & High Legibility */
   --color-warm-ivory: #F8F6F0;
   --color-warm-ivory-light: #FDFAF5;
   --color-warm-ivory-muted: #EBE5DB;
   --color-warm-ivory-subtle: #DFD7C9;
   
-  --color-charcoal: #121212;
-  --color-charcoal-muted: #1E1E1E;
-  --color-charcoal-light: #383838;
-  --color-charcoal-subtle: #6B6B6B;
-  --color-charcoal-faint: #9E9E9E;
+  --color-charcoal: #111111;
+  --color-charcoal-muted: #1C1C1E;
+  --color-charcoal-light: #2C2C2E;
+  --color-charcoal-subtle: #48484A;
+  --color-charcoal-faint: #7C7C80;
   
   --color-deep-black: #070707;
   --color-black-surface: #0E0E0E;
   --color-black-elevated: #161616;
-  --color-black-border: rgba(255, 255, 255, 0.07);
+  --color-black-border: rgba(255, 255, 255, 0.12);
   
   --color-bottle-green: #142F2A;
   --color-bottle-green-light: #1D443D;
   --color-bottle-green-muted: #0D201C;
   
   --color-champagne-gold: #C5A566;
-  --color-champagne-gold-light: #E0C895;
-  --color-champagne-gold-dark: #9E7F43;
-  --color-champagne-gold-subtle: rgba(197, 165, 102, 0.12);
-  --color-champagne-gold-glow: rgba(197, 165, 102, 0.25);
+  --color-champagne-gold-light: #E2CD9E;
+  --color-champagne-gold-dark: #9A7737;
+  --color-champagne-gold-subtle: rgba(197, 165, 102, 0.16);
+  --color-champagne-gold-glow: rgba(197, 165, 102, 0.35);
   
+  /* Text on Dark Scrims / Video (High Contrast) */
+  --color-text-dark-primary: #FFFFFF;
+  --color-text-dark-secondary: #EBE7DF;
+  --color-text-dark-muted: #BFB9AC;
+
   --color-oxblood: #632228;
   --color-oxblood-muted: #42161A;
   
   --color-brushed-silver: #B4B9C0;
   --color-brushed-silver-light: #E2E5E9;
   
-  /* Borders & Dividers */
-  --border-light: rgba(18, 18, 18, 0.08);
-  --border-light-emphasis: rgba(18, 18, 18, 0.16);
-  --border-dark: rgba(255, 255, 255, 0.08);
-  --border-dark-emphasis: rgba(255, 255, 255, 0.18);
-  --border-gold: rgba(197, 165, 102, 0.35);
-  --border-gold-subtle: rgba(197, 165, 102, 0.18);
+  /* Borders & Dividers with Enhanced Contrast */
+  --border-light: rgba(18, 18, 18, 0.12);
+  --border-light-emphasis: rgba(18, 18, 18, 0.24);
+  --border-dark: rgba(255, 255, 255, 0.12);
+  --border-dark-emphasis: rgba(255, 255, 255, 0.28);
+  --border-gold: rgba(197, 165, 102, 0.45);
+  --border-gold-subtle: rgba(197, 165, 102, 0.25);
 
   /* Typography */
   --font-serif: 'Cormorant Garamond', Garamond, Georgia, 'Times New Roman', serif;
@@ -49,6 +54,10 @@
   --container-wide-width: 1640px;
   --container-narrow-width: 1040px;
   
+  /* Touch & Accessibility Tokens (WCAG & Apple Guidelines) */
+  --touch-target-min: 44px;
+  --touch-target-lg: 52px;
+
   /* Navbar Height Tokens */
   --nav-height: 84px;
   --nav-height-expanded: 84px;
@@ -56,9 +65,9 @@
   --mobile-header-height: 64px;
 
   /* Major Section Spacing Rhythm */
-  --section-spacing-lg: clamp(6.5rem, 11vw, 10.5rem);
-  --section-spacing-md: clamp(4rem, 7.5vw, 7rem);
-  --section-spacing-sm: clamp(2.5rem, 4.5vw, 4rem);
+  --section-spacing-lg: clamp(5.5rem, 9vw, 9.5rem);
+  --section-spacing-md: clamp(3.5rem, 6vw, 6rem);
+  --section-spacing-sm: clamp(2rem, 4vw, 3.5rem);
 
   /* Precision Horological Motion Curves (Emil Kowalski / High Mechanical Feel) */
   --ease-luxury: cubic-bezier(0.22, 1, 0.36, 1);
@@ -73,10 +82,10 @@
   --duration-cinematic: 850ms;
 
   /* Elevation Shadows */
-  --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.04);
-  --shadow-card: 0 12px 36px rgba(0, 0, 0, 0.06);
-  --shadow-elevated: 0 24px 64px rgba(0, 0, 0, 0.12);
-  --shadow-dark-card: 0 16px 48px rgba(0, 0, 0, 0.45);
+  --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.05);
+  --shadow-card: 0 12px 36px rgba(0, 0, 0, 0.08);
+  --shadow-elevated: 0 24px 64px rgba(0, 0, 0, 0.16);
+  --shadow-dark-card: 0 16px 48px rgba(0, 0, 0, 0.55);
 
   /* Account / Utility Page Spacing */
   --account-page-padding-top: clamp(2rem, 3vw, 3rem);

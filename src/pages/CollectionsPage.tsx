@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useCollections } from '../hooks/useCollections';
+import { SeoHead } from '../components/common/SeoHead';
 import { ArrowRight } from 'lucide-react';
 import './Pages.css';
 
@@ -14,6 +15,18 @@ export const CollectionsPage: React.FC = () => {
 
   return (
     <main className="page-container theme-ivory">
+      <SeoHead
+        title="Collections & Portfolios | MEHR, INDUS, NOOR, KARAKORAM, ZAR"
+        description="Explore the five horological portfolios of NAYAB. Hand-finished dress watches, titanium architectural chronographs, complications, and high-jewelry timepieces."
+        canonicalPath="/collections"
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'CollectionPage',
+          name: 'NAYAB Collections & Portfolios',
+          url: 'https://nayabwatches.com/collections',
+          description: 'Five distinct horological expressions rooted in contemporary Pakistani craftsmanship.',
+        }}
+      />
       <div className="container section-padding">
         {/* Editorial Masthead */}
         <header className="page-header">

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { SeoHead } from '../components/common/SeoHead';
 import { CinematicExperience } from '../components/home/CinematicExperience';
 import { SectionTransition } from '../components/home/SectionTransition';
 import { OriginSection } from '../components/home/OriginSection';
@@ -34,6 +35,12 @@ export const HomePage: React.FC = () => {
 
   return (
     <main className="homepage">
+      <SeoHead
+        title="NAYAB | Haute Horlogerie & Contemporary Pakistani Watchmaking"
+        description="NAYAB is an independent luxury watch house crafting mechanical timepieces defined by patience, regional metallurgy, and generational permanence in Lahore, Pakistan."
+        canonicalPath="/"
+        image="/images/sovereign-39-front.png"
+      />
       {/* PHASE A: Pinned 3-Chapter Cinematic Experience */}
       <CinematicExperience />
 

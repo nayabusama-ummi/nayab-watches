@@ -3,6 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { productsApi, ApiProduct, ProductFilterParams } from '../api/products.api';
 import { useWishlist } from '../hooks/useWishlist';
+import { SeoHead } from '../components/common/SeoHead';
 import {
   Search,
   X,
@@ -190,6 +191,38 @@ export const WatchesPage: React.FC = () => {
 
   return (
     <main className="page-container theme-ivory watches-page">
+      <SeoHead
+        title="Timepieces Catalogue | All Mechanical Models"
+        description="Discover the complete collection of NAYAB mechanical timepieces. In-house calibres, Damascened steel, Grade 5 Titanium, 18K Rose Gold."
+        canonicalPath="/watches"
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'CollectionPage',
+          name: 'NAYAB Timepieces Catalogue',
+          description: 'The complete collection of fine mechanical timepieces from NAYAB.',
+          url: 'https://nayabwatches.com/watches',
+          mainEntity: {
+            '@type': 'ItemList',
+            numberOfItems: products.length,
+            itemListElement: products.map((p, idx) => ({
+              '@type': 'ListItem',
+              position: idx + 1,
+              item: {
+                '@type': 'Product',
+                name: p.name,
+                url: `https://nayabwatches.com/watches/${p.slug}`,
+                image: `https://nayabwatches.com/images/${p.slug}-front.png`,
+                offers: {
+                  '@type': 'Offer',
+                  price: p.price,
+                  priceCurrency: 'PKR',
+                  availability: 'https://schema.org/InStock',
+                },
+              },
+            })),
+          },
+        }}
+      />
       {/* ── CATALOGUE HERO & SEARCH ── */}
       <header className="watches-hero">
         <div className="container">

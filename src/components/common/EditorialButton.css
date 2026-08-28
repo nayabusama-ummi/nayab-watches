@@ -2,14 +2,16 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.65rem;
+  gap: 0.75rem;
   font-family: var(--font-sans);
-  font-weight: 400;
-  letter-spacing: 0.08em;
+  font-weight: 550;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   cursor: pointer;
   text-decoration: none;
   position: relative;
+  border-radius: 2px;
+  min-height: var(--touch-target-min, 44px);
   transition: transform var(--duration-micro) var(--ease-luxury),
               background-color var(--duration-ui) var(--ease-luxury),
               color var(--duration-ui) var(--ease-luxury),
@@ -20,7 +22,7 @@
 }
 
 .editorial-button:active {
-  transform: scale(0.97);
+  transform: scale(0.98);
 }
 
 .editorial-button:focus-visible {
@@ -30,32 +32,38 @@
 
 /* Sizing */
 .editorial-button--sm {
-  font-size: 0.75rem;
-  padding: 0.5rem 1rem;
+  font-size: 0.8125rem;
+  padding: 0.6rem 1.25rem;
+  min-height: 40px;
 }
 
 .editorial-button--md {
-  font-size: 0.8125rem;
-  padding: 0.75rem 1.6rem;
+  font-size: 0.875rem;
+  padding: 0.85rem 1.85rem;
+  min-height: 48px;
 }
 
 .editorial-button--lg {
-  font-size: 0.875rem;
-  padding: 1rem 2.25rem;
+  font-size: 0.9375rem;
+  padding: 1.1rem 2.5rem;
+  min-height: 54px;
 }
 
-/* Primary: Dark / Solid Ivory */
+/* Primary: Dark / Solid Ivory on Dark Backgrounds */
 .editorial-button--primary {
   background-color: var(--color-warm-ivory);
-  color: var(--color-charcoal);
+  color: var(--color-deep-black);
   border: 1px solid var(--color-warm-ivory);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 @media (hover: hover) and (pointer: fine) {
   .editorial-button--primary:hover {
-    background-color: var(--color-warm-ivory-light);
-    border-color: var(--color-warm-ivory-light);
-    color: var(--color-deep-black);
+    background-color: #FFFFFF;
+    border-color: #FFFFFF;
+    color: #000000;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    transform: translateY(-1px);
   }
 }
 
@@ -71,6 +79,7 @@
     background-color: transparent;
     color: var(--color-warm-ivory);
     border-color: var(--color-warm-ivory);
+    transform: translateY(-1px);
   }
 }
 
@@ -78,29 +87,34 @@
 .editorial-button--secondary {
   background-color: transparent;
   color: var(--color-warm-ivory);
-  padding-left: 0;
-  padding-right: 0;
-  border-bottom: 1px solid transparent;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.25);
+  border-radius: 0;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .editorial-button--secondary:hover {
-    color: var(--color-champagne-gold);
+    color: var(--color-champagne-gold-light);
+    border-bottom-color: var(--color-champagne-gold-light);
   }
 }
 
-/* Outline */
+/* Outline with Rich Backdrop Clarity */
 .editorial-button--outline {
-  background-color: transparent;
-  color: var(--color-warm-ivory);
-  border: 1px solid var(--border-dark-emphasis);
+  background-color: rgba(7, 7, 7, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
 }
 
 @media (hover: hover) and (pointer: fine) {
   .editorial-button--outline:hover {
     border-color: var(--color-champagne-gold);
-    color: var(--color-champagne-gold);
-    background-color: rgba(184, 150, 93, 0.05);
+    color: #FFFFFF;
+    background-color: rgba(197, 165, 102, 0.18);
+    transform: translateY(-1px);
   }
 }
 
@@ -109,12 +123,16 @@
   background-color: var(--color-champagne-gold);
   color: var(--color-deep-black);
   border: 1px solid var(--color-champagne-gold);
+  font-weight: 600;
+  box-shadow: 0 4px 20px rgba(197, 165, 102, 0.3);
 }
 
 @media (hover: hover) and (pointer: fine) {
   .editorial-button--gold:hover {
     background-color: var(--color-champagne-gold-light);
     border-color: var(--color-champagne-gold-light);
+    box-shadow: 0 6px 24px rgba(197, 165, 102, 0.45);
+    transform: translateY(-1px);
   }
 }
 
@@ -123,12 +141,15 @@
   background-color: transparent;
   color: inherit;
   padding: 0.25rem 0;
-  border-bottom: 1px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  border-radius: 0;
+  min-height: auto;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .editorial-button--text:hover {
-    opacity: 0.7;
+    color: var(--color-champagne-gold);
+    opacity: 1;
   }
 }
 
@@ -141,54 +162,60 @@
 
 @media (hover: hover) and (pointer: fine) {
   .editorial-button:hover .editorial-button__arrow-wrapper {
-    transform: translateX(4px);
+    transform: translateX(5px);
   }
 }
 
 /* ---------------------------------------------------------------------------
-   Light-surface inversions
-
-   Every variant above was written for the dark cinematic sections: the fill and
-   the text are both warm ivory. Placed on an ivory page — the bag, checkout,
-   account — a "primary" button rendered as #F2ECE2 on #FBF8F3, which made the
-   single most important CTA in the store almost invisible.
-
-   The variants are not redefined, only inverted for light backgrounds, so the
-   dark sections are untouched and no component needs to know where it sits.
+   Light-surface inversions (Theme Ivory)
    --------------------------------------------------------------------------- */
 .theme-ivory .editorial-button--primary,
 .theme-ivory-light .editorial-button--primary {
   background-color: var(--color-charcoal);
   color: var(--color-warm-ivory);
   border-color: var(--color-charcoal);
+  box-shadow: 0 4px 16px rgba(18, 18, 18, 0.15);
 }
 
 @media (hover: hover) and (pointer: fine) {
   .theme-ivory .editorial-button--primary:hover,
   .theme-ivory-light .editorial-button--primary:hover {
-    background-color: var(--color-deep-black);
-    border-color: var(--color-deep-black);
-    color: var(--color-warm-ivory);
+    background-color: #000000;
+    border-color: #000000;
+    color: #FFFFFF;
+    box-shadow: 0 8px 24px rgba(18, 18, 18, 0.25);
+    transform: translateY(-1px);
   }
 }
 
 .theme-ivory .editorial-button--secondary,
 .theme-ivory-light .editorial-button--secondary {
   color: var(--color-charcoal);
+  border-bottom-color: rgba(18, 18, 18, 0.35);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .theme-ivory .editorial-button--secondary:hover,
+  .theme-ivory-light .editorial-button--secondary:hover {
+    color: var(--color-champagne-gold-dark);
+    border-bottom-color: var(--color-champagne-gold-dark);
+  }
 }
 
 .theme-ivory .editorial-button--outline,
 .theme-ivory-light .editorial-button--outline {
+  background-color: transparent;
   color: var(--color-charcoal);
-  border-color: var(--border-light-emphasis);
+  border: 1.5px solid var(--border-light-emphasis);
 }
 
 @media (hover: hover) and (pointer: fine) {
   .theme-ivory .editorial-button--outline:hover,
   .theme-ivory-light .editorial-button--outline:hover {
-    border-color: var(--color-champagne-gold);
-    color: var(--color-champagne-gold);
-    background-color: rgba(184, 150, 93, 0.06);
+    border-color: var(--color-charcoal);
+    color: #000000;
+    background-color: rgba(18, 18, 18, 0.04);
+    transform: translateY(-1px);
   }
 }
 
@@ -208,7 +235,6 @@
   opacity: 0.42;
 }
 
-/* No press feedback and no arrow glide on something that will not respond. */
 .editorial-button--disabled:active,
 .editorial-button:disabled:active {
   transform: none;
@@ -221,11 +247,6 @@
   }
 }
 
-/*
-  The loading affordance is a slow sweep across the label rather than a spinner:
-  a spinner would be the one piece of generic SaaS furniture on the page. It is
-  linear because it represents indeterminate waiting, not a transition.
-*/
 .editorial-button.is-loading {
   cursor: progress;
   opacity: 1;
@@ -241,7 +262,7 @@
   position: absolute;
   inset-inline: 0;
   bottom: -0.35em;
-  height: 1px;
+  height: 2px;
   background-color: currentColor;
   transform-origin: left center;
   animation: editorial-button-sweep 1100ms linear infinite;
@@ -258,5 +279,11 @@
     animation: none;
     transform: scaleX(1);
     opacity: 0.5;
+  }
+}
+
+@media (max-width: 768px) {
+  .editorial-button {
+    min-height: var(--touch-target-min, 44px);
   }
 }

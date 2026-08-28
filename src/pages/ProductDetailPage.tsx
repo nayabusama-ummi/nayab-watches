@@ -4,8 +4,9 @@ import { useProduct, useProducts } from '../hooks/useProducts';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../hooks/useWishlist';
 import { useAuth } from '../context/AuthContext';
-import { Heart, ShieldCheck, Truck, Clock, ArrowRight, Check } from 'lucide-react';
+import { Heart, ShieldCheck, Truck, Clock, ArrowRight, Check, Grid } from 'lucide-react';
 import { EditorialButton } from '../components/common/EditorialButton';
+import { SeoHead } from '../components/common/SeoHead';
 import './Pages.css';
 
 export const ProductDetailPage: React.FC = () => {
@@ -63,16 +64,16 @@ export const ProductDetailPage: React.FC = () => {
           <p className="body-lead" style={{ marginTop: '1rem', marginBottom: '2rem' }}>
             The requested reference could not be located in the atelier catalog.
           </p>
-          <Link to="/collections" className="btn btn-secondary">
-            Discover Collections
-          </Link>
+          <EditorialButton to="/watches" variant="primary" size="md">
+            Explore All Timepieces
+          </EditorialButton>
         </div>
       </main>
     );
   }
 
   const inWishlist = isInWishlist(product.id);
-  const images = product.images?.length > 0 ? product.images : [{ id: '1', url: '/images/sovereign-39-front.png', alt: product.name, type: 'FRONT' as const, sortOrder: 1 }];
+  const images = product.images?.length > 0 ? product.images : [{ id: '1', url: `/images/${product.slug}-front.png`, alt: product.name, type: 'FRONT' as const, sortOrder: 1 }];
   const currentImage = images[selectedImageIndex] || images[0];
 
   const handleAddToBag = async () => {
@@ -91,7 +92,6 @@ export const ProductDetailPage: React.FC = () => {
 
   const handleToggleWishlist = async () => {
     if (!isAuthenticated) {
-      // If not logged in, redirect to login with return path
       window.location.href = `/login?redirect=/watches/${product.slug}`;
       return;
     }
@@ -105,10 +105,50 @@ export const ProductDetailPage: React.FC = () => {
 
   return (
     <main className="pdp-page theme-ivory">
+      {/* Dynamic SEO & JSON-LD Structured Data */}
+      <SeoHead
+        title={`${product.name} (${product.reference}) | Fine Watchmaking`}
+        description={`${product.name} — ${product.shortDescription || product.description}. Crafted in ${product.caseMaterial} with in-house mechanical calibre.`}
+        canonicalPath={`/watches/${product.slug}`}
+        image={currentImage.url}
+        type="product"
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'Product',
+          name: product.name,
+          image: `https://nayabwatches.com${currentImage.url}`,
+          description: product.description,
+          sku: product.reference,
+          mpn: product.reference,
+          brand: {
+            '@type': 'Brand',
+            name: 'NAYAB Fine Watchmaking',
+          },
+          offers: {
+            '@type': 'Offer',
+            url: `https://nayabwatches.com/watches/${product.slug}`,
+            priceCurrency: 'PKR',
+            price: product.price,
+            priceValidUntil: '2027-12-31',
+            itemCondition: 'https://schema.org/NewCondition',
+            availability: product.availability === 'OUT_OF_STOCK'
+              ? 'https://schema.org/OutOfStock'
+              : 'https://schema.org/InStock',
+            seller: {
+              '@type': 'Organization',
+              name: 'NAYAB Fine Watchmaking',
+            },
+          },
+          category: 'Luxury Watches',
+        }}
+      />
+
       {/* Breadcrumb Navigation */}
       <div className="container pdp-breadcrumb-container">
         <nav className="pdp-breadcrumb" aria-label="Breadcrumb">
-          <Link to="/collections" className="pdp-breadcrumb__link">Collections</Link>
+          <Link to="/" className="pdp-breadcrumb__link">Atelier</Link>
+          <span className="pdp-breadcrumb__sep">/</span>
+          <Link to="/watches" className="pdp-breadcrumb__link">Timepieces</Link>
           <span className="pdp-breadcrumb__sep">/</span>
           <Link to={`/collections/${product.collection.slug}`} className="pdp-breadcrumb__link">
             {product.collection.name}
@@ -256,7 +296,7 @@ export const ProductDetailPage: React.FC = () => {
         </div>
       </section>
 
-      {/* EDITORIAL STORY SECTIONS BELOW */}
+      {/* EDITORIAL STORY SECTIONS */}
       
       {/* 1. The Design Philosophy */}
       <section className="pdp-editorial-section theme-ivory-light section-padding">
@@ -346,7 +386,7 @@ export const ProductDetailPage: React.FC = () => {
               <span className="pdp-spec-card__val">{product.dial}</span>
             </div>
             <div className="pdp-spec-card">
-              <span className="pdp-spec-card__label">Calibre</span>
+              <span className="pdp-spec-card__label">Calibre Movement</span>
               <span className="pdp-spec-card__val">{product.movement}</span>
             </div>
             <div className="pdp-spec-card">
@@ -369,7 +409,7 @@ export const ProductDetailPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. Related Timepieces */}
+      {/* 4. Related Timepieces & Clear Next Steps */}
       {relatedProducts.length > 0 && (
         <section className="pdp-related theme-ivory-light section-padding">
           <div className="container">
@@ -384,7 +424,7 @@ export const ProductDetailPage: React.FC = () => {
                   <Link to={`/watches/${rel.slug}`} className="luxury-product-card__media-link">
                     <div className="luxury-product-card__thumb-frame">
                       <img
-                        src={rel.images[0]?.url || '/images/sovereign-39-front.png'}
+                        src={rel.images[0]?.url || `/images/${rel.slug}-front.png`}
                         alt={rel.name}
                         className="luxury-product-card__img"
                       />
@@ -409,9 +449,37 @@ export const ProductDetailPage: React.FC = () => {
                 </article>
               ))}
             </div>
+
+            {/* Clear Next Pathways Navigation */}
+            <div className="pdp-navigation-footer">
+              <EditorialButton to="/watches" variant="outline" size="md">
+                <Grid size={15} style={{ marginRight: '0.4rem' }} /> Explore All Timepieces
+              </EditorialButton>
+              <EditorialButton to={`/collections/${product.collection.slug}`} variant="primary" size="md">
+                View {product.collection.name} Collection <ArrowRight size={15} style={{ marginLeft: '0.4rem' }} />
+              </EditorialButton>
+            </div>
           </div>
         </section>
       )}
+
+      {/* 5. Sticky Mobile Purchase Action Bar */}
+      <div className="pdp-sticky-bar" aria-label="Quick Acquisition Action">
+        <div className="pdp-sticky-bar__inner">
+          <div className="pdp-sticky-bar__meta">
+            <span className="pdp-sticky-bar__name">{product.name}</span>
+            <span className="pdp-sticky-bar__price">{product.formattedPrice}</span>
+          </div>
+          <button
+            type="button"
+            className="pdp-sticky-bar__btn"
+            onClick={handleAddToBag}
+            disabled={isAdding || product.availability === 'OUT_OF_STOCK'}
+          >
+            {addedNotice ? 'Added to Bag ✓' : isAdding ? 'Reserving...' : 'Add to Bag'}
+          </button>
+        </div>
+      </div>
     </main>
   );
 };

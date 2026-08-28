@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useCollection } from '../hooks/useCollections';
+import { SeoHead } from '../components/common/SeoHead';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
 import './Pages.css';
 
@@ -54,6 +55,19 @@ export const CollectionDetailPage: React.FC = () => {
 
   return (
     <main className="page-container theme-ivory">
+      <SeoHead
+        title={`${collection.name} Collection | Fine Watchmaking Portfolio`}
+        description={collection.description || `${collection.name} Collection by NAYAB Fine Watchmaking.`}
+        canonicalPath={`/collections/${collection.slug}`}
+        image={collection.heroImage || '/images/sovereign-39-front.png'}
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'CollectionPage',
+          name: `${collection.name} Collection`,
+          description: collection.description || `${collection.name} Collection by NAYAB Fine Watchmaking.`,
+          url: `https://nayabwatches.com/collections/${collection.slug}`,
+        }}
+      />
       {/* Editorial Collection Hero */}
       <section className="collection-hero theme-black">
         <div className="container">

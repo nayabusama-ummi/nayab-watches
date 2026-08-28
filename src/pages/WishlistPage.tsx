@@ -5,6 +5,7 @@ import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import { Trash2, ShoppingBag, ArrowRight } from 'lucide-react';
 import { EditorialButton } from '../components/common/EditorialButton';
+import { SeoHead } from '../components/common/SeoHead';
 import './Pages.css';
 
 export const WishlistPage: React.FC = () => {
@@ -24,6 +25,11 @@ export const WishlistPage: React.FC = () => {
 
   return (
     <main className="page-container theme-ivory">
+      <SeoHead
+        title="Curated Wishlist | Saved Timepiece References"
+        description="View your saved NAYAB mechanical timepieces and curated collection references."
+        canonicalPath="/wishlist"
+      />
       <div className="container section-padding">
         {/* Header */}
         <header className="page-header">

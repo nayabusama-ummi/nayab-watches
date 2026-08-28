@@ -7,6 +7,7 @@ import { ordersApi, CreateOrderPayload } from '../api/orders.api';
 import { addressesApi, ApiAddress, AddressPayload, PROVINCES } from '../api/addresses.api';
 import { ApiError, messageFor } from '../api/client';
 import { EditorialButton } from '../components/common/EditorialButton';
+import { SeoHead } from '../components/common/SeoHead';
 import {
   ArrowLeft,
   MapPin,
@@ -193,6 +194,11 @@ export const CheckoutPage: React.FC = () => {
 
   return (
     <main className="page-container theme-ivory commerce-page">
+      <SeoHead
+        title="Checkout & Client Acquisition Confirmation"
+        description="Confirm your delivery address and reserve your NAYAB fine mechanical timepiece allocation."
+        canonicalPath="/checkout"
+      />
       <div className="container section-padding">
         <Link to="/cart" className="commerce-back-link">
           <ArrowLeft size={13} /> Return to Bag
