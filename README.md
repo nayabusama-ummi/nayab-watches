@@ -16,6 +16,61 @@ NAYAB represents an authentic horological identity that rejects generic luxury t
 4. **KARAKORAM** — High-altitude expedition chronometers engineered from 904L stainless steel with bidirectional rotating timing bezels. Reference: *Karakoram 42* (Ref. NB-4205-SS).
 5. **ZAR** — Grand Complications atelier creations featuring hand-engraved 18k Honey Gold cases, minute repeaters, and perpetual calendars. Reference: *Zar Perpetual Minute Repeater* (Ref. NB-4309-HG).
 
+## Visual Experience & Timepiece Gallery
+
+<div align="center">
+  <table border="0">
+    <tr>
+      <td width="50%" align="center">
+        <img src="public/images/sovereign-39-front.png" alt="NAYAB Sovereign 39 18K Rose Gold" width="320" />
+        <br />
+        <strong>MEHR · Sovereign 39 (Ref. NB-3901-RG)</strong>
+        <br />
+        <em>Grand Feu Ivory Enamel · 18K Rose Gold (5N) · Calibre N-12 Manual</em>
+      </td>
+      <td width="50%" align="center">
+        <img src="public/images/meridian-41-front.png" alt="NAYAB Meridian 41 Grade 5 Titanium" width="320" />
+        <br />
+        <strong>INDUS · Meridian 41 (Ref. NB-4102-TI)</strong>
+        <br />
+        <em>Grade 5 Titanium · Integrated Articulated Bracelet · Calibre N-01</em>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%" align="center">
+        <img src="public/images/noor-32-women.webp" alt="NAYAB Noor 32 Champagne Gold" width="320" />
+        <br />
+        <strong>NOOR · Noor 32 (Ref. NB-3201-CG)</strong>
+        <br />
+        <em>18K Champagne Gold · Slender 32mm Dress Geometry</em>
+      </td>
+      <td width="50%" align="center">
+        <img src="public/images/collection-regatta.png" alt="NAYAB Karakoram 42 Expedition Chronograph" width="320" />
+        <br />
+        <strong>KARAKORAM · Karakoram 42 (Ref. NB-4205-SS)</strong>
+        <br />
+        <em>904L High-Altitude Expedition Chronograph · Bi-Directional Timing Bezel</em>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%" align="center">
+        <img src="public/images/meridian-exploded.png" alt="Calibre N-01 Exploded Technical Architecture" width="320" />
+        <br />
+        <strong>Horological Movement Architecture</strong>
+        <br />
+        <em>Exploded Component Calibration & Articulated Geometry</em>
+      </td>
+      <td width="50%" align="center">
+        <img src="public/images/watchmaker-atelier.png" alt="Lahore Atelier Horological Bench" width="320" />
+        <br />
+        <strong>Lahore Private Atelier</strong>
+        <br />
+        <em>Hand-Regulated Chronometry & Subcontinent Metallurgical Finishing</em>
+      </td>
+    </tr>
+  </table>
+</div>
+
 ---
 
 ## 2. Technical Architecture
