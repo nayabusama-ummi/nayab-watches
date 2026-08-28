@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { ArrowRight, Lock, AlertCircle, Eye, EyeOff, ShieldCheck } from 'lucide-react';
+import { Lock, AlertCircle, Eye, EyeOff, ShieldCheck } from 'lucide-react';
 import { EditorialButton } from '../components/common/EditorialButton';
 import './AuthPages.css';
 
@@ -210,7 +210,6 @@ export const RegisterPage: React.FC = () => {
                   className="auth-form__submit-btn"
                 >
                   {isSubmitting ? 'Creating Client Record…' : 'Register Client Account'}
-                  <ArrowRight size={16} />
                 </EditorialButton>
               </div>
             </form>

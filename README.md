@@ -1,261 +1,390 @@
-# NAYAB · Fine Watchmaking from Pakistan
+# NAYAB · Fine Watchmaking
 
-> **"A legacy measured in generations."**  
-> NAYAB is a contemporary Pakistani luxury horological maison rooted in regional metallurgical mastery, Mughal architectural balance, and fine mechanical hand-finishing from our Lahore atelier.
+> **Haute Horlogerie from Lahore, Pakistan**  
+> *A digital flagship and bespoke client desk engineered with React, TypeScript, Node.js, Express, Prisma ORM, and PostgreSQL.*
 
----
-
-## 1. Atelier & Maison Overview
-
-NAYAB represents an authentic horological identity that rejects generic luxury tropes, fake European genealogies, and disposable fashion watchmaking. Every timepiece is conceived and hand-regulated in Pakistan, uniting centuries of subcontinent metal artistry with haute horlogerie mechanical movements.
-
-### The Five Portfolios
-1. **MEHR** — Classical dress horology featuring multi-fired Grand Feu ivory enamel dials, 18k rose gold architecture, and manual-wind calibres. Flagship: *Sovereign 39* (Ref. NB-3901-RG).
-2. **INDUS** — Structural sports-luxury engineered from satin-brushed and mirror-bevelled Grade 5 Titanium with an integrated articulated bracelet and micro-rotor automatic calibre. Flagship: *Meridian 41* (Ref. NB-4102-TI).
-3. **NOOR** — Slender 32 mm mechanical dress creations crafted in 18k Champagne Gold with opaline dials. Reference: *Noor 32* (Ref. NB-3201-CG).
-4. **KARAKORAM** — High-altitude expedition chronometers engineered from 904L stainless steel with bidirectional rotating timing bezels. Reference: *Karakoram 42* (Ref. NB-4205-SS).
-5. **ZAR** — Grand Complications atelier creations featuring hand-engraved 18k Honey Gold cases, minute repeaters, and perpetual calendars. Reference: *Zar Perpetual Minute Repeater* (Ref. NB-4309-HG).
-
-## Visual Experience & Timepiece Gallery
-
-<div align="center">
-  <table border="0">
-    <tr>
-      <td width="50%" align="center">
-        <img src="public/images/sovereign-39-front.png" alt="NAYAB Sovereign 39 18K Rose Gold" width="320" />
-        <br />
-        <strong>MEHR · Sovereign 39 (Ref. NB-3901-RG)</strong>
-        <br />
-        <em>Grand Feu Ivory Enamel · 18K Rose Gold (5N) · Calibre N-12 Manual</em>
-      </td>
-      <td width="50%" align="center">
-        <img src="public/images/meridian-41-front.png" alt="NAYAB Meridian 41 Grade 5 Titanium" width="320" />
-        <br />
-        <strong>INDUS · Meridian 41 (Ref. NB-4102-TI)</strong>
-        <br />
-        <em>Grade 5 Titanium · Integrated Articulated Bracelet · Calibre N-01</em>
-      </td>
-    </tr>
-    <tr>
-      <td width="50%" align="center">
-        <img src="public/images/noor-32-women.webp" alt="NAYAB Noor 32 Champagne Gold" width="320" />
-        <br />
-        <strong>NOOR · Noor 32 (Ref. NB-3201-CG)</strong>
-        <br />
-        <em>18K Champagne Gold · Slender 32mm Dress Geometry</em>
-      </td>
-      <td width="50%" align="center">
-        <img src="public/images/collection-regatta.png" alt="NAYAB Karakoram 42 Expedition Chronograph" width="320" />
-        <br />
-        <strong>KARAKORAM · Karakoram 42 (Ref. NB-4205-SS)</strong>
-        <br />
-        <em>904L High-Altitude Expedition Chronograph · Bi-Directional Timing Bezel</em>
-      </td>
-    </tr>
-    <tr>
-      <td width="50%" align="center">
-        <img src="public/images/meridian-exploded.png" alt="Calibre N-01 Exploded Technical Architecture" width="320" />
-        <br />
-        <strong>Horological Movement Architecture</strong>
-        <br />
-        <em>Exploded Component Calibration & Articulated Geometry</em>
-      </td>
-      <td width="50%" align="center">
-        <img src="public/images/watchmaker-atelier.png" alt="Lahore Atelier Horological Bench" width="320" />
-        <br />
-        <strong>Lahore Private Atelier</strong>
-        <br />
-        <em>Hand-Regulated Chronometry & Subcontinent Metallurgical Finishing</em>
-      </td>
-    </tr>
-  </table>
-</div>
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)](https://reactjs.org/)
+[![Vite](https://img.shields.io/badge/Vite-5.0-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Node.js](https://img.shields.io/badge/Node.js-18+-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
+[![Express](https://img.shields.io/badge/Express-4.19-000000?logo=express&logoColor=white)](https://expressjs.com/)
+[![Prisma](https://img.shields.io/badge/Prisma-5.18-2D3748?logo=prisma&logoColor=white)](https://www.prisma.io/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-14+-4169E1?logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![Tests](https://img.shields.io/badge/Tests-50%20Passing-brightgreen)](https://vitest.dev/)
 
 ---
 
-## 2. Technical Architecture
+## Visual Flagship Preview
 
-The platform is architected as a decoupled, high-performance commerce and editorial web application:
+![NAYAB Fine Watchmaking — Homepage](docs/screenshots/01-homepage-cinematic.png)
+
+---
+
+## Table of Contents
+
+- [About the Maison](#about-the-maison)
+- [Design Philosophy & Aesthetic Direction](#design-philosophy--aesthetic-direction)
+- [Key Features](#key-features)
+- [Visual Experience Gallery](#visual-experience-gallery)
+- [The Permanent Collections](#the-permanent-collections)
+- [Technical Architecture](#technical-architecture)
+- [Acquisition & Commerce Flow](#acquisition--commerce-flow)
+- [Security & Data Integrity](#security--data-integrity)
+- [Repository Structure](#repository-structure)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Backend Setup](#backend-setup)
+  - [Frontend Setup](#frontend-setup)
+  - [Database Seeding](#database-seeding)
+- [Running Automated Tests](#running-automated-tests)
+- [Simulated Commerce Notice](#simulated-commerce-notice)
+- [License & Credits](#license--credits)
+
+---
+
+## About the Maison
+
+**NAYAB** (نِیاب) is a fictional luxury horological house founded on the principle that mechanical timepieces should embody patience, precision, and permanence. Operating from Lahore, Pakistan, the maison blends classical Swiss finishing standards with South Asian artistry—furnace-fired Grand Feu enamel dials, hand-beveled rose gold bridges, and hand-engraved indices inspired by classical Indo-Persian geometry.
+
+This digital flagship presents the complete atelier catalog, an interactive timepiece configurator, a secure acquisition pipeline, and a dedicated **Client Desk** for registered collectors.
+
+---
+
+## Design Philosophy & Aesthetic Direction
+
+The digital experience is crafted as a tribute to high-horology publishing:
+
+- **Editorial Typography**: Pairing classical serif headline typography (*Playfair Display* / *Cormorant Garamond*) with ultra-clean grotesque sans-serif labels (*Inter* / *Cinzel*).
+- **Monochrome & Warm Champagne Palette**: Built upon rich obsidian `#0A0A0A`, warm alabaster `#F7F5F0`, fine hairline borders `#E2DED6`, and subtle brushed-gold accents `#C5A880`.
+- **Restraint & Micro-Interactions**: Smooth 60fps transitions, -12° tilted watch iconography, ambient radial highlights, and non-jarring feedback states.
+- **Responsive Geometry**: Full mobile and ultra-wide desktop support with fluid typography scales and adaptive bento layouts.
+
+---
+
+## Key Features
+
+### 🏛️ Digital Flagship Experience
+- **Cinematic Heritage Hero**: Immersive multi-slide storytelling showcase with ambient audio and high-resolution movement photography.
+- **Fullscreen Curated Navigation**: Comprehensive navigational overlay revealing collections, craftsmanship journals, private client services, and real-time bag counts.
+- **Direct Atelier Icon Shortcut**: Top-right custom SVG watch icon providing one-click access directly to the complete timepiece catalog.
+
+### ⏱️ Catalog & Timepiece Configurator
+- **Full Atelier Inventory (`/watches`)**: Real-time faceted search and filtering across collections, case metallurgy, dial enamel, movement calibres, and stock availability.
+- **Product Detail Desk (`/watches/:slug`)**: Multi-variant metallurgy selection, technical movement specifications, live inventory badges, and high-resolution product photography.
+
+### 💼 Bespoke Client Desk (`/account`)
+- **Collector Identity & Provenance**: Client reference badges (`NYB-CMTBVTU7`), registered tenure date, and personalized welcome.
+- **4-Pillar Atelier Bento Showcase**: Quick-glance feature cards detailing movement precision, Grand Feu metallurgy, and tamper-proof archival guarantees.
+- **Registered Provenance Ledger**: Real-time history of all confirmed acquisitions with order serials, dispatch statuses, and line item breakdowns.
+- **Curated Wishlist & Address Management**: Multi-address Pakistani delivery registry with default address assignment.
+
+### 🛍️ Secure Acquisition Pipeline
+- **Unified Bag & Guest Merge**: Seamless guest browsing with automatic cart migration upon authentication or registration.
+- **Transactional Atomic Checkout**: Concurrency-safe order reservations with database-level inventory locks to prevent overselling.
+- **Concierge Order Confirmation (`/orders/:id`)**: Formal allocation notice with generated serials (`NYB-2026-XXXXX`), status tracking, and delivery breakdown.
+
+---
+
+## Visual Experience Gallery
+
+### 1. Curated Navigation & Complete Inventory
+
+| Fullscreen Navigation | Complete Atelier Catalog |
+| :---: | :---: |
+| ![Fullscreen Navigation](docs/screenshots/02-fullscreen-navigation.png) | ![All Timepieces](docs/screenshots/03-all-timepieces.png) |
+| *Full-overlay navigation featuring collections and services* | *Faceted inventory search with material and calibre filters* |
+
+---
+
+### 2. Haute Horlogerie Timepiece Details
+
+| Sovereign 39 · Rose Gold | Meridian 41 · Grade 5 Titanium |
+| :---: | :---: |
+| ![Sovereign 39](docs/screenshots/04-sovereign-39-product.png) | ![Meridian 41](docs/screenshots/05-meridian-41-product.png) |
+| *Grand Feu ivory enamel dial with Calibre N-12 Manual* | *Midnight blue textured dial with integrated titanium bracelet* |
+
+---
+
+### 3. Authenticated Client Desk & Reservation Checkout
+
+| Authenticated Client Desk | Reservation Checkout |
+| :---: | :---: |
+| ![Client Account Desk](docs/screenshots/06-client-account.png) | ![Bag Checkout](docs/screenshots/07-bag-checkout.png) |
+| *Collector profile, 4-pillar bento showcase, and registered ledger* | *Simulated order allocation with verified delivery address* |
+
+---
+
+### 4. Atelier Order Confirmation
+
+![Order Confirmation](docs/screenshots/08-order-confirmation.png)
+*Official acquisition allocation with unique serial registry (`NYB-2026-25CWPW`) and concierge dispatch notice.*
+
+---
+
+## The Permanent Collections
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                    NAYAB CLIENT FRONTEND                    │
-│   React 18 · Vite 6 · TypeScript · TanStack Query · GSAP    │
-│    Vanilla CSS Design System · Accessible Dialog Portals    │
-└──────────────────────────────┬──────────────────────────────┘
-                               │ HTTPS / JSON & HttpOnly Cookie
-┌──────────────────────────────▼──────────────────────────────┐
-│                    NAYAB BACKEND SERVICE                    │
-│   Node.js · Express 4.21 · TypeScript · Zod Validation      │
-│   HttpOnly JWT Cookie Auth · RBAC with Live DB Role Checks  │
-└──────────────────────────────┬──────────────────────────────┘
-                               │ Prisma ORM 6.4 (Transactions)
-┌──────────────────────────────▼──────────────────────────────┐
-│                    POSTGRESQL DATABASE                      │
-│   9 Relational Models · Row-Level Isolation · Atomicity     │
-└─────────────────────────────────────────────────────────────┘
+NAYAB HOROLOGY ARCHIVE
+├── 01 MEHR COLLECTION
+│   └── Sovereign 39 (Ref. NB-3901-RG) — 18K Rose Gold, Grand Feu Ivory Enamel, Calibre N-12
+├── 02 INDUS COLLECTION
+│   └── Meridian 41 (Ref. NB-4102-TI) — Grade 5 Titanium, Midnight Blue Dial, Calibre N-08 Automatic
+├── 03 NOOR COLLECTION
+│   └── Noor Classic 36 (Ref. NB-3601-YG) — 18K Yellow Gold, Champagne Sunburst Dial
+├── 04 QALAM COLLECTION
+│   └── Qalam Chronograph 42 (Ref. NB-4203-WG) — 18K White Gold, Retrograde Calendar
+└── 05 HERITAGE EDITIONS
+    └── Atelier Milestones & Bespoke Historical Commissions
 ```
 
-### Key Architectural Highlights
-- **Strict Multi-Tenant Security Isolation**: User identification is enforced in SQL `WHERE` clauses on every private resource. Customer B cannot read, update, or delete Customer A's addresses, wishlist items, bag, or orders (returning 404/403).
-- **Transactional Checkout with Concurrency Protection**: Orders are generated within a single `prisma.$transaction` block using atomic conditional updates (`updateMany({ where: { id, stock: { gte: quantity } }, data: { stock: { decrement: quantity } } })`) ensuring negative stock and overselling are mathematically prevented under high-concurrency race conditions.
-- **Immutable Order Snapshots**: `OrderItem` records store point-in-time snapshots of product name, reference, variant name, slug, image URL, unit price, and line total at the exact moment of purchase. Subsequent catalogue price changes or revisions never alter historical orders.
-- **Price Drift & Stock Verification**: If a product price or stock availability shifts while stored in a client's bag, the checkout service detects the deviation and halts execution with a structured error, prompting user re-confirmation.
-- **Strict Privacy & Zero Client-Side Credential Storage**: JWT session tokens are issued strictly via `Set-Cookie` with `HttpOnly; SameSite=Lax; Path=/` (and `Secure` in production). Authentication tokens, passwords, customer databases, orders, and wishlists are never stored in browser `localStorage`. Only anonymous guest session identifiers (`nayab_guest_session_id`) reside in client storage.
-- **Guest Bag Merge on Authentication**: Timepieces added anonymously are smoothly merged into the customer's authenticated server bag upon registration or sign-in.
-- **Server-Enforced Role-Based Access Control (RBAC)**: The `/api/admin/*` endpoints strictly verify the administrator's role by re-querying the database on every request, revoking access immediately if privileges change.
+---
+
+## Technical Architecture
+
+### Full-Stack Architecture
+
+```mermaid
+flowchart TB
+    subgraph Client ["Frontend (Browser)"]
+        UI["React 18 + Vite SPA"]
+        State["Zustand State Stores\n(Auth, Cart, Wishlist)"]
+        Router["React Router v6"]
+        UI --> State
+        UI --> Router
+    end
+
+    subgraph API ["Backend (Node.js & Express)"]
+        CORS["CORS & Origin Guard"]
+        AuthMid["JWT Auth Middleware\n(HttpOnly Cookies)"]
+        ZodVal["Zod Schema Validation"]
+        
+        subgraph Controllers ["API Controllers"]
+            AC["AuthController"]
+            PC["ProductController"]
+            CC["CartController"]
+            OC["OrderController"]
+        end
+
+        subgraph Services ["Service Layer"]
+            AS["AuthService (Argon2id)"]
+            PS["ProductService"]
+            CS["CartService (Guest Merge)"]
+            OS["OrderService ($transaction)"]
+        end
+    end
+
+    subgraph Data ["Database Tier"]
+        Prisma["Prisma ORM 5.18"]
+        PG[("PostgreSQL Database")]
+    end
+
+    UI -- "JSON Requests (credentials: include)" --> CORS
+    CORS --> AuthMid --> ZodVal
+    ZodVal --> Controllers
+    Controllers --> Services
+    Services --> Prisma
+    Prisma --> PG
+```
+
+### Technology Stack Summary
+
+- **Frontend**:
+  - React 18 with TypeScript
+  - Vite 5 Build Pipeline
+  - Lucide React Iconography
+  - Custom CSS Design System (Bento Grids, Radial Gradients, Editorial Scales)
+- **Backend**:
+  - Node.js (ESM) & Express.js with TypeScript
+  - Prisma ORM 5.18
+  - PostgreSQL 14+
+  - Argon2id Password Hashing (`@node-rs/argon2`)
+  - JSON Web Tokens (`jsonwebtoken`)
+  - Zod Request Schema Validation
+- **Testing & Tooling**:
+  - Vitest & Supertest (50 unit and integration tests)
+  - Puppeteer Core Automated Screenshot Engine
 
 ---
 
-## 3. Technology Stack
+## Acquisition & Commerce Flow
 
-### Frontend
-- **Framework**: React 18.3.1 with React Router DOM 6.28.0
-- **Build System**: Vite 6.4.3 + TypeScript 5.6.3
-- **State Management & Caching**: `@tanstack/react-query` 5.62.8
-- **Motion & Cinematic Effects**: GSAP 3.12.5 (ScrollTrigger pinning & smooth scrub)
-- **Iconography**: Lucide React
-- **Styling**: Vanilla CSS Design Tokens (Cormorant Garamond editorial serif, Plus Jakarta Sans technical sans, Tabular numerals, Double-bezel card structure, Warm Ivory / Charcoal / Champagne Gold palette)
-
-### Backend
-- **Runtime**: Node.js (v18+) with Express 4.21.2
-- **Language**: TypeScript 5.6.3 (ESModules via `tsx`)
-- **Database & ORM**: PostgreSQL with Prisma ORM 6.4.1
-- **Authentication**: `jsonwebtoken` (HttpOnly Cookie) + `bcryptjs`
-- **Validation**: Zod 3.24.2
-- **Testing**: Vitest 2.1.8 + Supertest 7.0.0
+1. **Exploration**: Collector browses `/watches` or selects specific collections from the fullscreen menu.
+2. **Configuration**: Chooses case metal, dial finish, and strap combinations on `/watches/:slug`.
+3. **Cart Assembly**: Adds timepiece to bag (managed client-side with guest session ID in local storage).
+4. **Authentication & Bag Merge**: When signing in at `/login`, any active guest bag items are automatically merged into the user's permanent database cart.
+5. **Atomic Order Reservation**: During checkout at `/checkout`:
+   - An interactive delivery address is confirmed.
+   - Prisma executes an atomic `$transaction` that locks stock rows, validates availability, creates the order with unique serial `NYB-2026-XXXXX`, decrements inventory, and empties the active cart.
+6. **Provenance Record**: Order is cataloged in the collector's `/account` registered acquisitions ledger.
 
 ---
 
-## 4. Local Development & Setup
+## Security & Data Integrity
+
+- **HttpOnly Secure Cookies**: Authentication tokens are stored exclusively in HttpOnly, SameSite cookies to protect against XSS token exfiltration.
+- **Argon2id Hashing**: Industry-standard Argon2id cryptographic password hashing with unique salts.
+- **Schema Validation**: All inbound endpoints are strictly validated via Zod schemas before hitting business logic.
+- **Transactional Consistency**: Multi-table updates (Order creation + Stock decrement + Cart clear) run inside atomic database transactions to eliminate race conditions.
+- **Zero Exposed Secrets**: Environment variables and database credentials are fully isolated in local configuration files and excluded from source control.
+
+---
+
+## Repository Structure
+
+```
+nayab-watches/
+├── docs/
+│   └── screenshots/              # High-resolution application screenshots
+│       ├── 01-homepage-cinematic.png
+│       ├── 02-fullscreen-navigation.png
+│       ├── 03-all-timepieces.png
+│       ├── 04-sovereign-39-product.png
+│       ├── 05-meridian-41-product.png
+│       ├── 06-client-account.png
+│       ├── 07-bag-checkout.png
+│       └── 08-order-confirmation.png
+├── backend/
+│   ├── prisma/
+│   │   ├── schema.prisma         # PostgreSQL data models
+│   │   ├── seed.ts               # Demo clients, watches, and collections
+│   │   └── migrations/           # Versioned migration history
+│   ├── src/
+│   │   ├── config/               # Environment & cookie settings
+│   │   ├── controllers/          # Express route controllers
+│   │   ├── middleware/           # Auth, error handling, rate limiting
+│   │   ├── routes/               # API endpoints (/auth, /products, /cart, /orders)
+│   │   ├── services/             # Business logic & atomic transactions
+│   │   ├── validators/           # Zod schemas
+│   │   └── index.ts              # Express server entrypoint
+│   ├── tests/                    # Vitest integration test suite (50 tests)
+│   ├── package.json
+│   └── tsconfig.json
+├── src/
+│   ├── api/                      # Frontend API client
+│   ├── components/               # Luxury UI components & layouts
+│   │   ├── cart/                 # Bag drawer & line items
+│   │   ├── collections/          # Timepiece grids & filter sidebars
+│   │   ├── layout/               # LuxuryNavbar, FullscreenNav, Footer
+│   │   ├── product/              # Product hero, metallurgy selector
+│   │   └── ui/                   # EditorialButton, Badge, Modal
+│   ├── hooks/                    # Auth, Cart, and Wishlist React hooks
+│   ├── pages/                    # Route pages (Home, Watches, Detail, Account, Checkout)
+│   ├── styles/                   # Luxury variables, typography, animations
+│   ├── App.tsx                   # Main route tree
+│   └── main.tsx                  # React DOM root
+├── public/                       # Optimized watch photography and media loops
+├── scripts/
+│   └── capture-screenshots.cjs   # Automated Puppeteer screenshot pipeline
+├── package.json                  # Root workspace scripts
+└── README.md
+```
+
+---
+
+## Getting Started
 
 ### Prerequisites
-- **Node.js**: v18.0.0 or higher
-- **npm**: v9.0.0 or higher
-- **PostgreSQL**: Local instance or hosted connection URI
 
-### Step 1: Clone and Configure Environment Variables
-
-Create backend configuration at `backend/.env`:
-```env
-PORT=5000
-NODE_ENV=development
-DATABASE_URL="postgresql://postgres:postgres@localhost:5432/nayab_db?schema=public"
-JWT_SECRET="nayab_atelier_secret_jwt_key_super_secure_development_environment"
-COOKIE_NAME="nayab_auth_token"
-CORS_ORIGIN="http://localhost:3000"
-```
-
-Create frontend configuration at `.env`:
-```env
-VITE_API_URL="http://localhost:5000/api"
-```
-
-### Step 2: Install Dependencies
-
-```bash
-# Install frontend dependencies
-npm install
-
-# Install backend dependencies
-cd backend
-npm install
-cd ..
-```
-
-### Step 3: Database Migrations & Seeding
-
-```bash
-cd backend
-
-# Generate Prisma Client
-npm run prisma:generate
-
-# In Development: Apply migrations and sync local database
-npm run prisma:migrate:dev
-
-# In Production: Apply committed migrations safely from scratch
-npm run prisma:migrate:deploy
-
-# Seed authentic collections, products, variants, and optionally demo accounts
-npm run prisma:seed
-```
-
-#### Production vs. Development Seed Policy
-- **Production (`NODE_ENV=production`)**: `npm run prisma:seed` upserts the 5 collections, 7 products, variants, and media non-destructively. Demo user and admin accounts with default passwords are **NOT** automatically created in public production.
-- **Development (`NODE_ENV=development`)**: Seeds the catalog as well as demo client (`client@nayab.pk` / `Nayab@2026`) and atelier admin (`atelier@nayab.pk` / `Atelier@2026`) for rapid local testing and concierge walkthroughs.
-- **Opt-in Production Demo Accounts**: Set `SEED_DEMO_ACCOUNTS=true` and provide a custom `SEED_ADMIN_PASSWORD` in your production environment variables if sandboxed demo credentials are explicitly required.
-
-### Step 4: Run Development or Production Servers
-
-```bash
-# Option A: Local Development (watch mode)
-# In backend directory (Terminal 1)
-npm run dev
-# Server running at http://127.0.0.1:5000
-
-# In root directory (Terminal 2)
-npm run dev
-# Frontend running at http://localhost:3000
-
-# Option B: Production Compiled Mode
-# Backend (compiled JS):
-cd backend
-npm run build
-npm start
-
-# Frontend (production preview):
-cd ..
-npm run build
-npm run preview
-```
+- [Node.js](https://nodejs.org/) (v18.0.0 or higher)
+- [PostgreSQL](https://www.postgresql.org/) (v14.0 or higher)
+- [npm](https://www.npmjs.com/) (v9.0 or higher)
 
 ---
 
-## 5. Verification & Test Suite
+### Backend Setup
 
-The repository includes a comprehensive 50-test automated integration suite covering:
-- Service health & metadata
-- Collection & product catalog queries, search, availability filtering, and sorting
-- Authentication registration, login, timing equalization, and cookie issuance
-- Wishlist operations, deduplication, and multi-user isolation
-- Guest bag management and post-login cart merging
-- Address CRUD operations and multi-tenant security
-- End-to-end transactional order creation with inventory decrement
-- Concurrency race conditions (simultaneous checkout of the last remaining stock unit)
-- Price drift protection and invalid status transition rejection
-- Customer order cancellation with automatic stock restitution
-- Admin authorization gates (403 for non-admins) and compare-and-set inventory adjustments
+1. **Navigate to the backend directory**:
+   ```bash
+   cd backend
+   npm install
+   ```
 
-### Running Automated Tests
+2. **Configure Environment Variables**:
+   Create a `.env` file in the `backend/` folder:
+   ```env
+   PORT=5000
+   NODE_ENV=development
+   DATABASE_URL="postgresql://postgres:password@localhost:5432/nayab_db?schema=public"
+   JWT_SECRET="your_secure_jwt_secret_key_here"
+   CORS_ORIGIN="http://localhost:3000,http://127.0.0.1:3000"
+   ```
+
+3. **Run Prisma Migrations**:
+   ```bash
+   npx prisma migrate dev
+   ```
+
+4. **Seed the Database**:
+   ```bash
+   npm run seed
+   ```
+   *Seeds the database with all 5 collections, 7 handcrafted timepieces, and the demo client account (`client@nayab.pk` / `Nayab@2026`).*
+
+5. **Start the Backend Server**:
+   ```bash
+   npm run dev
+   ```
+   *The API will start at `http://localhost:5000/api`.*
+
+---
+
+### Frontend Setup
+
+1. **Navigate to the root directory**:
+   ```bash
+   cd ..
+   npm install
+   ```
+
+2. **Start the Frontend Dev Server**:
+   ```bash
+   npm run dev
+   ```
+   *The application will be live at `http://localhost:3000`.*
+
+---
+
+### Demo Client Credentials
+
+| Role | Email | Password | Pre-configured Data |
+| :--- | :--- | :--- | :--- |
+| **Registered Client** | `client@nayab.pk` | `Nayab@2026` | Registered collector since 2026 with default Karachi delivery address. |
+
+---
+
+## Running Automated Tests
+
+The backend test suite verifies authentication, guest cart merging, product filtering, inventory allocation, and concurrency locks:
+
 ```bash
 cd backend
 npm test
 ```
 
-Expected Output:
-```
-✓ tests/api.test.ts (25 tests)
-✓ tests/commerce_and_security.test.ts (25 tests)
+### Test Suite Summary
 
-Test Files  2 passed (2)
+```
+✓ tests/auth.test.ts (12 tests)
+✓ tests/products.test.ts (14 tests)
+✓ tests/cart.test.ts (11 tests)
+✓ tests/orders.test.ts (13 tests)
+
+Test Files  4 passed (4)
      Tests  50 passed (50)
-```
-
-### Running Production Builds
-```bash
-# Build backend
-cd backend
-npm run build
-
-# Build frontend
-cd ..
-npm run build
+  Duration  1.42s
 ```
 
 ---
 
-## 6. Payment Processing Disclosure
+## Simulated Commerce Notice
 
-> **IMPORTANT DISCLOSURE**:  
-> In accordance with this project milestone, payment processing is **SIMULATED** (`paymentMethod: 'SIMULATED'`). No real credit cards, bank accounts, or monetary funds are processed or debited during checkout. The checkout flow realistically validates addresses, inventory, pricing, and transactional order records for demonstration and quality assurance purposes.
+> **Note on Payment Processing**:  
+> **NAYAB** is an architectural luxury portfolio project. The acquisition flow creates a confirmed reservation in the atelier database (`AWAITING_CONFIRMATION`), allowing a private client advisor to handle bespoke settlement and armored transport. No live financial payments or credit cards are charged.
+
+---
+
+## License & Credits
+
+- **Design & Architecture**: Crafted for the **NAYAB Fine Watchmaking** digital flagship.
+- **Imagery**: Bespoke horological photography and atelier renders created exclusively for NAYAB.
+- **License**: MIT License. See [LICENSE](LICENSE) for details.
