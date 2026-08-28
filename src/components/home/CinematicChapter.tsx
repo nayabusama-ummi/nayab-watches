@@ -39,13 +39,23 @@ export const CinematicChapter: React.FC<CinematicChapterProps> = ({
             </span>
           )}
 
-          <h2 className="display-hero cinematic-chapter__title">
-            {chapter.title.split('\n').map((line, i) => (
-              <span key={i} className="cinematic-chapter__title-line">
-                {line}
-              </span>
-            ))}
-          </h2>
+          {chapter.id === 1 ? (
+            <h1 className="display-hero cinematic-chapter__title">
+              {chapter.title.split('\n').map((line, i) => (
+                <span key={i} className="cinematic-chapter__title-line">
+                  {line}
+                </span>
+              ))}
+            </h1>
+          ) : (
+            <h2 className="display-hero cinematic-chapter__title">
+              {chapter.title.split('\n').map((line, i) => (
+                <span key={i} className="cinematic-chapter__title-line">
+                  {line}
+                </span>
+              ))}
+            </h2>
+          )}
 
           {chapter.subtitle && (
             <p className="cinematic-chapter__subtitle">{chapter.subtitle}</p>

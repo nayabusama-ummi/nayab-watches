@@ -8,9 +8,9 @@ import './CinematicExperience.css';
 const CHAPTERS_DATA: ChapterData[] = [
   {
     id: 1,
-    eyebrow: 'NAYAB · FINE WATCHMAKING FROM PAKISTAN',
+    eyebrow: 'NAYAB · HAUTE HORLOGERIE & CONTEMPORARY PAKISTANI WATCHMAKING',
     title: 'A legacy measured\nin generations.',
-    supportingLine: 'Mechanical timepieces shaped by patience, precision and permanence.',
+    supportingLine: 'Hand-finished mechanical timepieces defined by patience, regional metallurgy, in-house calibres, and generational permanence in Lahore, Pakistan.',
     ctaText: 'Discover our heritage',
     ctaTarget: '#origin',
     videoSrc: '/media/nayab-heritage.mp4',
