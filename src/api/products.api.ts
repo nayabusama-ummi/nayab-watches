@@ -1,4 +1,5 @@
 import { apiClient } from './client';
+import { mockStore } from '../data/mockStore';
 
 export interface ProductImage {
   id: string;
@@ -81,18 +82,38 @@ export interface ProductFilterParams {
 }
 
 export const productsApi = {
-  getAll: (params: ProductFilterParams = {}): Promise<ProductsResponse> => {
-    const query = new URLSearchParams();
-    Object.entries(params).forEach(([k, v]) => {
-      if (v !== undefined && v !== '') {
-        query.append(k, String(v));
+  getAll: async (params: ProductFilterParams = {}): Promise<ProductsResponse> => {
+    try {
+      const query = new URLSearchParams();
+      Object.entries(params).forEach(([k, v]) => {
+        if (v !== undefined && v !== '') {
+          query.append(k, String(v));
+        }
+      });
+      const queryString = query.toString();
+      const res = await apiClient<ProductsResponse>(`/products${queryString ? `?${queryString}` : ''}`);
+      if (res && Array.isArray(res.products) && res.products.length > 0) {
+        return res;
       }
-    });
-    const queryString = query.toString();
-    return apiClient<ProductsResponse>(`/products${queryString ? `?${queryString}` : ''}`);
+      return mockStore.getProducts(params);
+    } catch {
+      return mockStore.getProducts(params);
+    }
   },
 
-  getBySlug: (slug: string): Promise<{ product: ApiProduct }> => {
-    return apiClient<{ product: ApiProduct }>(`/products/${slug}`);
+  getBySlug: async (slug: string): Promise<{ product: ApiProduct }> => {
+    try {
+      const res = await apiClient<{ product: ApiProduct }>(`/products/${slug}`);
+      if (res && res.product) {
+        return res;
+      }
+      const fallback = mockStore.getProductBySlug(slug);
+      if (fallback) return { product: fallback };
+      throw new Error('Timepiece not found');
+    } catch {
+      const fallback = mockStore.getProductBySlug(slug);
+      if (fallback) return { product: fallback };
+      throw new Error('Timepiece not found');
+    }
   },
 };

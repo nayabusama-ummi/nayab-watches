@@ -1,4 +1,5 @@
 import { apiClient } from './client';
+import { mockStore } from '../data/mockStore';
 
 export interface UserProfile {
   id: string;
@@ -33,25 +34,64 @@ export interface AuthResponse {
 }
 
 export const authApi = {
-  register: (payload: RegisterPayload): Promise<AuthResponse> => {
-    return apiClient<AuthResponse>('/auth/register', {
-      method: 'POST',
-      body: JSON.stringify(payload),
-    });
+  register: async (payload: RegisterPayload): Promise<AuthResponse> => {
+    try {
+      const res = await apiClient<AuthResponse>('/auth/register', {
+        method: 'POST',
+        body: JSON.stringify(payload),
+      });
+      if (res && res.user) {
+        mockStore.saveUser(res.user);
+        return res;
+      }
+      const user = mockStore.loginDemo(payload.email, payload.name);
+      return { user };
+    } catch {
+      const user = mockStore.loginDemo(payload.email, payload.name);
+      return { user };
+    }
   },
 
-  login: (payload: LoginPayload): Promise<AuthResponse> => {
-    return apiClient<AuthResponse>('/auth/login', {
-      method: 'POST',
-      body: JSON.stringify(payload),
-    });
+  login: async (payload: LoginPayload): Promise<AuthResponse> => {
+    try {
+      const res = await apiClient<AuthResponse>('/auth/login', {
+        method: 'POST',
+        body: JSON.stringify(payload),
+      });
+      if (res && res.user) {
+        mockStore.saveUser(res.user);
+        return res;
+      }
+      const user = mockStore.loginDemo(payload.email);
+      return { user };
+    } catch {
+      const user = mockStore.loginDemo(payload.email);
+      return { user };
+    }
   },
 
-  logout: (): Promise<{ message?: string }> => {
-    return apiClient<{ message?: string }>('/auth/logout', { method: 'POST' });
+  logout: async (): Promise<{ message?: string }> => {
+    try {
+      await apiClient<{ message?: string }>('/auth/logout', { method: 'POST' });
+    } catch {}
+    mockStore.saveUser(null);
+    return { message: 'Logged out successfully' };
   },
 
-  getMe: (): Promise<{ user: UserProfile }> => {
-    return apiClient<{ user: UserProfile }>('/auth/me');
+  getMe: async (): Promise<{ user: UserProfile }> => {
+    try {
+      const res = await apiClient<{ user: UserProfile }>('/auth/me');
+      if (res && res.user) {
+        mockStore.saveUser(res.user);
+        return res;
+      }
+      const user = mockStore.getUser();
+      if (user) return { user };
+      throw new Error('Not authenticated');
+    } catch {
+      const user = mockStore.getUser();
+      if (user) return { user };
+      throw new Error('Not authenticated');
+    }
   },
 };

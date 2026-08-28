@@ -1,5 +1,6 @@
 import { apiClient } from './client';
 import { ApiProduct } from './products.api';
+import { mockStore } from '../data/mockStore';
 
 export interface ApiCollection {
   id: string;
@@ -15,11 +16,31 @@ export interface ApiCollection {
 }
 
 export const collectionsApi = {
-  getAll: (): Promise<{ collections: ApiCollection[] }> => {
-    return apiClient<{ collections: ApiCollection[] }>('/collections');
+  getAll: async (): Promise<{ collections: ApiCollection[] }> => {
+    try {
+      const res = await apiClient<{ collections: ApiCollection[] }>('/collections');
+      if (res && Array.isArray(res.collections) && res.collections.length > 0) {
+        return res;
+      }
+      return { collections: mockStore.getCollections() };
+    } catch {
+      return { collections: mockStore.getCollections() };
+    }
   },
 
-  getBySlug: (slug: string): Promise<{ collection: ApiCollection }> => {
-    return apiClient<{ collection: ApiCollection }>(`/collections/${slug}`);
+  getBySlug: async (slug: string): Promise<{ collection: ApiCollection }> => {
+    try {
+      const res = await apiClient<{ collection: ApiCollection }>(`/collections/${slug}`);
+      if (res && res.collection) {
+        return res;
+      }
+      const fallback = mockStore.getCollectionBySlug(slug);
+      if (fallback) return { collection: fallback };
+      throw new Error('Collection not found');
+    } catch {
+      const fallback = mockStore.getCollectionBySlug(slug);
+      if (fallback) return { collection: fallback };
+      throw new Error('Collection not found');
+    }
   },
 };

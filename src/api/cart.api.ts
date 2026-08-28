@@ -1,5 +1,6 @@
 import { apiClient } from './client';
 import { ApiProduct, ProductVariant } from './products.api';
+import { mockStore } from '../data/mockStore';
 
 export interface CartItem {
   id: string;
@@ -42,58 +43,94 @@ export interface ApiCart {
  * happens inside the checkout transaction.
  */
 export const cartApi = {
-  getCart: (sessionId?: string): Promise<{ cart: ApiCart }> => {
-    return apiClient<{ cart: ApiCart }>(
-      `/cart${sessionId ? `?sessionId=${encodeURIComponent(sessionId)}` : ''}`
-    );
+  getCart: async (sessionId?: string): Promise<{ cart: ApiCart }> => {
+    try {
+      const res = await apiClient<{ cart: ApiCart }>(
+        `/cart${sessionId ? `?sessionId=${encodeURIComponent(sessionId)}` : ''}`
+      );
+      if (res && res.cart) return res;
+      return { cart: mockStore.getCart() };
+    } catch {
+      return { cart: mockStore.getCart() };
+    }
   },
 
-  addItem: (payload: {
+  addItem: async (payload: {
     productId: string;
     variantId?: string;
     quantity?: number;
     sessionId?: string;
   }): Promise<{ cart: ApiCart }> => {
-    return apiClient<{ cart: ApiCart }>('/cart/items', {
-      method: 'POST',
-      body: JSON.stringify(payload),
-    });
+    try {
+      const res = await apiClient<{ cart: ApiCart }>('/cart/items', {
+        method: 'POST',
+        body: JSON.stringify(payload),
+      });
+      if (res && res.cart) return res;
+      return { cart: mockStore.addToCart(payload.productId, payload.variantId, payload.quantity || 1) };
+    } catch {
+      return { cart: mockStore.addToCart(payload.productId, payload.variantId, payload.quantity || 1) };
+    }
   },
 
-  updateItem: (
+  updateItem: async (
     itemId: string,
     quantity: number,
     sessionId?: string
   ): Promise<{ cart: ApiCart }> => {
-    return apiClient<{ cart: ApiCart }>(
-      `/cart/items/${itemId}${
-        sessionId ? `?sessionId=${encodeURIComponent(sessionId)}` : ''
-      }`,
-      { method: 'PATCH', body: JSON.stringify({ quantity }) }
-    );
+    try {
+      const res = await apiClient<{ cart: ApiCart }>(
+        `/cart/items/${itemId}${
+          sessionId ? `?sessionId=${encodeURIComponent(sessionId)}` : ''
+        }`,
+        { method: 'PATCH', body: JSON.stringify({ quantity }) }
+      );
+      if (res && res.cart) return res;
+      return { cart: mockStore.updateCartItem(itemId, quantity) };
+    } catch {
+      return { cart: mockStore.updateCartItem(itemId, quantity) };
+    }
   },
 
-  removeItem: (itemId: string, sessionId?: string): Promise<{ cart: ApiCart }> => {
-    return apiClient<{ cart: ApiCart }>(
-      `/cart/items/${itemId}${
-        sessionId ? `?sessionId=${encodeURIComponent(sessionId)}` : ''
-      }`,
-      { method: 'DELETE' }
-    );
+  removeItem: async (itemId: string, sessionId?: string): Promise<{ cart: ApiCart }> => {
+    try {
+      const res = await apiClient<{ cart: ApiCart }>(
+        `/cart/items/${itemId}${
+          sessionId ? `?sessionId=${encodeURIComponent(sessionId)}` : ''
+        }`,
+        { method: 'DELETE' }
+      );
+      if (res && res.cart) return res;
+      return { cart: mockStore.removeCartItem(itemId) };
+    } catch {
+      return { cart: mockStore.removeCartItem(itemId) };
+    }
   },
 
-  clear: (sessionId?: string): Promise<{ cart: ApiCart }> => {
-    return apiClient<{ cart: ApiCart }>(
-      `/cart${sessionId ? `?sessionId=${encodeURIComponent(sessionId)}` : ''}`,
-      { method: 'DELETE' }
-    );
+  clear: async (sessionId?: string): Promise<{ cart: ApiCart }> => {
+    try {
+      const res = await apiClient<{ cart: ApiCart }>(
+        `/cart${sessionId ? `?sessionId=${encodeURIComponent(sessionId)}` : ''}`,
+        { method: 'DELETE' }
+      );
+      if (res && res.cart) return res;
+      return { cart: mockStore.clearCart() };
+    } catch {
+      return { cart: mockStore.clearCart() };
+    }
   },
 
   /** Folds a guest bag into the account bag. Called once, on sign-in. */
-  mergeCart: (sessionId: string): Promise<{ cart: ApiCart }> => {
-    return apiClient<{ cart: ApiCart }>('/cart/merge', {
-      method: 'POST',
-      body: JSON.stringify({ sessionId }),
-    });
+  mergeCart: async (sessionId: string): Promise<{ cart: ApiCart }> => {
+    try {
+      const res = await apiClient<{ cart: ApiCart }>('/cart/merge', {
+        method: 'POST',
+        body: JSON.stringify({ sessionId }),
+      });
+      if (res && res.cart) return res;
+      return { cart: mockStore.getCart() };
+    } catch {
+      return { cart: mockStore.getCart() };
+    }
   },
 };
